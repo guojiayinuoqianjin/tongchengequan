@@ -1,0 +1,78 @@
+ page{
+  background: #fff;
+}
+.stv-container .tab-bar {
+  background: #f3f3f5;
+} 
+.product-flex{
+  display: flex;
+}
+.order-item{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.order-item-sub{
+  font-size: 24rpx;
+}
+.fontred{
+  color: #fa521e;
+}
+.order-item-box{
+ margin-top: 20rpx;
+ padding-top: 20rpx;
+}
+.order-pic{
+  width: 220rpx;
+  height: 220rpx;
+}
+.order-product-info{
+  position: relative;
+  flex: 1;
+  padding-left: 20rpx;
+}
+.order-product-name{
+  font-size: 28rpx;
+}
+.order-product-tag{
+  color: #fa521e;
+  font-size: 24rpx;
+  margin: 4rpx 0;
+}
+button::after{
+  border: none;
+}
+.product-price-wrap{
+  display: flex;
+  align-items: flex-end;
+}
+.product-price-new{
+  font-size: 24rpx;
+  color: #fa521e;
+}
+.product-btn-wrap{
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.product-price-new text{
+  font-size: 40rpx;
+}
+.product-price-before{
+  padding-left: 14rpx;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  color: #aaa;
+  padding-bottom: 6rpx;
+}
+.product-btn{
+  background-color: #fa521e;
+  color: #fff;
+  font-size: 24rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  border-radius: 4rpx;
+}

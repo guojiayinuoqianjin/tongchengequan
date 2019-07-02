@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="recordlist">
+
+    <view class="flexrow border-1px-b"  wx:for="{{goldList}}" wx:for-item="v" wx:for-index="k">
+      <view class="left">{{v.created_at}}</view>
+      <view class="right">
+        <view class="text">{{v.incomeStatus == 0 ? '处理中' : '成功'}}</view>
+        <view class="money">+{{v.num/100}}元</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="tips" wx:if="{{empty}}">
+  <view class="line"></view>
+  <view class="noinfo-text">抱歉！您还没有提现记录</view>
+  <view class="line"></view>
+</view>
+<view class="tips" wx:if="{{more}}">
+  <view class="line"></view>
+  <view class="noinfo-text">没有更多了</view>
+  <view class="line"></view>
+</view>

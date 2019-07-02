@@ -1,0 +1,110 @@
+.flexbox{
+  align-items: center;
+}
+.order-item{
+  background-color: #fff;
+  margin: 14rpx 0;
+  padding: 20rpx;
+}
+.order-item-sub{
+  font-size: 24rpx;
+}
+.fontred{
+  color: #fa521e;
+}
+.order-item-box{
+ margin-top: 20rpx;
+ padding-top: 20rpx;
+}
+.order-product-de{
+  padding-top:20rpx;
+}
+.order-pic{
+  width: 120rpx;
+  height: 120rpx;
+}
+.order-product-info{
+  flex: 1;
+  padding-left: 20rpx;
+}
+.order-product-name{
+  font-size: 25rpx;
+}
+.order-product-tag{
+  color: #8a8a8a;
+  font-size: 24rpx;
+  margin: 64rpx 0;
+}
+.order-edit{
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+}
+.order-ad{
+  background: #fff;
+  margin: 14rpx 0;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.order-ad-pic{
+  flex: 0 0 60rpx;
+  width: 60rpx;
+}
+.order-ad-info{
+  flex: 1;
+}
+.order-ad-mr{
+  margin-top: 10rpx;
+}
+.order-code{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.order-code-wrap{
+  text-align: center;
+  padding-top: 40rpx;
+  color: #aaa;
+}
+.order-code-img{
+  max-width: 400rpx;
+  border: 1px #EDECE8 solid;
+}
+.order-code-num{
+  font-size: 40rpx;
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}
+.create-wrap{
+  padding: 0 25rpx;
+  background: #fff;
+  margin:25px 0px;
+
+}
+
+.button{
+  height:100rpx;
+
+}
+.order-wrap{
+  position: relative;
+}
+.order-bg{
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, .9);
+}
+.order-status{
+  position: absolute;
+  right: 30%;
+  top: 50%;
+  width: 168rpx;
+  height: 128rpx;
+}
+button{
+  height:65rpx;
+  line-height:65rpx;
+  font-size:24rpx;
+}

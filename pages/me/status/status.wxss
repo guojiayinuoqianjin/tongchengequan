@@ -1,0 +1,32 @@
+.status{
+  text-align: center;
+  padding-top: 100rpx;
+}
+.success{
+  width: 250rpx;
+  height: 250rpx;
+}
+.status-info{
+  margin: 40rpx 0 60rpx;
+  color: #a0a0a0;
+  padding: 0 160rpx;
+  line-height: 1.6;
+}
+.btn{
+  padding: 0 100rpx;
+}
+.btn-record,.btn-return{
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  margin: 0 20rpx;
+}
+.btn-record{
+  background: #dcdadb;
+}
+.btn-return{
+  background: #ff532a; 
+}

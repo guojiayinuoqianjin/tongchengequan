@@ -1,0 +1,104 @@
+<view class="container">
+  <form class='form' bindsubmit="formSubmit" report-submit="true">
+    <view class="conwrap border-1px-t">
+      <view class="flexnormal border-1px-b">
+        <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        <view class="card-wrap">
+          <!-- <text class="card-name border-1px-b">{{userinfo.nickName}}</text> -->
+          <input name="name" type="text" value="{{info.name ? info.name : userInfo.nickName}}" placeholder="请输入姓名" />
+          <view class="card-phone">
+             <view class="flexbox" wx:if="{{userInfo.phone}}">
+              <view>{{userInfo.phone}}</view>
+              <view class="validbtn" bindtap="toValid">重新绑定</view>
+            </view> 
+            <view class="flexbox" wx:if="{{!userInfo.phone}}" bindtap="toValid">
+              <view>赶紧去绑定吧~</view>
+              <view class="validbtn">绑定手机号</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="conwrap border-1px-t">
+      <view class="cardpadding border-1px-b">
+        <view class="flexrow border-1px-b">
+          <view class="card-item-name">公司
+            <text class="fontred">*</text>
+          </view>
+          <view>
+            <input name="company" value="{{info.company}}" type="text" placeholder="请输入公司名称" />
+          </view>
+        </view>
+        <view class="flexrow border-1px-b">
+          <view class="card-item-name">职务
+            <text class="fontred">*</text>
+          </view>
+          <view>
+            <input name="position" type="text" value="{{info.position}}" placeholder="请输入公司职务" />
+          </view>
+        </view>
+        <view class="flexrow border-1px-b">
+          <view class="card-item-name">城市
+            <text class="fontred">*</text>
+          </view>
+          <view>
+            <input name="city" type="text" value="{{info.city}}" placeholder="请输入所在城市" />
+          </view>
+          <view class="address-icon">
+            <image src="/images/add_address.png" class="iconfont minmargin"></image>
+          </view>
+        </view>
+        <view class="flexrow border-1px-b">
+          <view class="card-item-name">Email</view>
+          <view>
+            <input name="email" type="text" value="{{info.email}}" placeholder="12345678@163.com" />
+          </view>
+        </view>
+
+        <view class="flexrow alltop">
+          <view class="card-item-name">业务
+          </view>
+          <view>
+            <textarea selectable="true" bindinput="textareaValue" value="{{info.business}}" class="textarea" name="business" placeholder="主营业务可方便用户搜索到您的名片" auto-height="true" maxlength="-1" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="conwrap border-1px-t">
+      <view class="cardpadding border-1px-b">
+        <view class="flexbox border-1px-b">
+          <view class="alldishid">所有人可见</view>
+          <view>
+            <switch name="status" checked="{{status ? false : true}}" bindchange="allDisplay" />
+          </view>
+        </view>
+        <view class="flexbox">
+          <view class="alldishid">交换名片可见</view>
+          <view>
+            <switch name="status" checked="{{status ? true : false}}" bindchange="partDisplay" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="conwrap border-1px-t">
+      <view class="border-1px-b">
+        <view class="cardmore">
+          <view class="card-item-name">更多</view>
+          <view class="card-textarea">
+            <textarea placeholder="让你的微信好友更好的了解你..."></textarea>
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+    <view class="create-wrap" bindtap="toMecard">
+      <button class="createdbtn" type="primary" size="default" form-type="submit">
+        <text wx:if="{{!info.name}}">创建</text>
+        <text wx:if="{{info.name}}">保存</text>
+      </button>
+    </view>
+
+  </form>
+</view>

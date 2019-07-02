@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="me-block">
+    <view class="flexbox" bindtap="makePhone">
+      <view class="meicon"><text selectable="true">企业邮箱</text></view>
+      <text selectable="true" class="about-info">henanxunbu@163.com</text>
+    </view>
+    <view class="flexbox" bindtap="toAbout">
+      <view class="meicon"><text selectable="true">公司名称</text></view>
+      <text selectable="true" class="about-info">河南迅步电子商务有限公司</text>
+    </view>
+    <view class="flexbox" bindtap="toAbout">
+      <view class="meicon"><text selectable="true">电话</text></view>
+      <text selectable="true" class="about-info">15937099598</text>
+    </view>
+    <view class="flexbox" bindtap="toAbout">
+      <view class="meicon"><text selectable="true">微信</text></view>
+      <text selectable="true" class="about-info">hnxunbu</text>
+    </view>
+  </view>
+</view>
+

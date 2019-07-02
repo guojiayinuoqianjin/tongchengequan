@@ -1,0 +1,117 @@
+<view class="container">
+  <view class="personal-wrap">
+    <image class="personal-bg" src="/images/me_bg.png"></image>
+    <view class="per-info">
+      <image class="avatar"  bindtap="clickMemberImage" data-src="{{memberInfo.avatarUrl}}"  src="{{memberInfo.avatarUrl}}"></image>
+      <view class="name">
+        <text selectable="true" class="nickName">{{memberInfo.nickName}}</text>
+        <!--男-->
+        <image class="iconfont" wx:if="{{memberInfo.gender == 1}}" src="/images/man.png"></image>
+        <!--女-->
+        <image class="iconfont" wx:if="{{memberInfo.gender == 2}}" src="/images/woman.png"></image>
+      </view>
+      <view class="per-info-text">
+        <view class="per-block">
+          <image class="iconfont" src="/images/p_xin_white.png"></image>
+          <text selectable="true">今日获赞：{{memberInfo.todayPraise ? memberInfo.todayPraise : 0}}</text>
+        </view>
+        <view class="per-block">
+          <image class="iconfont" src="/images/p_jinbi.png"></image>
+          <text selectable="true">金币：{{memberInfo.gold ? memberInfo.gold : 0}}</text>
+        </view>
+        <view class="per-block">
+          <image class="iconfont" src="/images/p_huangguan.png"></image>
+          <text selectable="true">等级：{{memberInfo.empirical_value ? memberInfo.empirical_value : 0}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="user-ls">
+    <view class="otheruser-item">
+      <view class="new-box">
+
+        <view class="new-item" wx:for="{{list}}" wx:for-item="v" wx:for-index="k">
+          <view class="new-date" wx:if="{{v.created_at}}">{{v.created_at}}</view>
+          <view class="new-date" wx:if="{{!v.created_at}}">{{v.d}}<text selectable="true">{{v.m}}月</text></view>
+          <!--消息start-->
+          <view class="new-item-info">
+            <view class="flexbox">
+              <view class="new-item-name">{{memberInfo.nickName}}</view>
+              <text selectable="true" class="category-name">{{v.catename}}</text>
+            </view>
+            <view class="new-item-des" data-art_id="{{v.id}}" bindtap="artDetail" data-k="{{k}}">
+              <text selectable="true" class="new-item-des-pre">{{v.info}}</text>
+            </view>
+            <!--一张图片-->
+            <!--两张及以上图片-->
+            <view class="morepic" wx:if="{{v.images.length > 1 && v.images}}">
+              <image class="new-item-pic" mode="aspectFill" wx:for="{{v.images}}" wx:for-item="img" src="{{host}}{{img}}" bindtap="clickImage" data-src="{{host}}{{img}}" data-imgs="{{v.images}}"></image>
+
+            </view>
+            <!--一张图片-->
+            <view class="onepic" wx:if="{{v.images.length == 1 && v.images}}">
+              <image class="new-item-pic" mode="widthFix" style="width:320rpx;" bindtap="clickImage" data-src="{{host}}{{img}}" data-imgs="{{v.images}}" wx:for="{{v.images}}" wx:for-item="img" src="{{host}}{{img}}"></image>
+            </view>
+            <view class="location"  data-lng="{{v.lng}}" data-lat="{{v.lat}}"  data-address="{{v.address}}"  bindtap="toMap">
+              <image class="iconfont" src="/images/add_address_blue.png"></image>
+              <text selectable="true">{{v.address}}</text>
+            </view>
+
+            <view class="flexbox">
+              <view class="new-item-time"><text selectable="true" class="delete-btn" data-cateid="{{v.cateid}}" data-art_id="{{v.id}}"  data-k="{{k}}"  bindtap="delart" wx:if="{{mid == memberInfo.mid}}">删除</text></view>
+              <view class="useractive"  wx:if="{{v.status == 1}}">
+               <!-- 点击量不让显示了 -->
+                <!-- <view class="user-item">
+                  <image class="md-iconfont" src="/images/icon_eye.png"></image>
+                  <text selectable="true" class="number"> {{v.click}}</text>
+                </view> -->
+                <view class="user-item" bindtap="praiseAdd" data-nickname="{{memberInfo.nickName}}" data-cateid="{{v.cateid}}" data-img="{{v.avatarUrl}}" data-art_id="{{v.id}}" data-k="{{k}}">
+                  <view class="icon-zan" hover-class="icon-zan-red"></view>
+                  <text selectable="true" class="number zannumber">{{v.praise}}</text>
+                </view>
+                <view class="user-item" data-k="{{k}}" data-cateid="{{v.cateid}}" data-art_id="{{v.id}}" bindtap="comment">
+                  <image class="md-iconfont" src="/images/icon-pinglun.png"></image>
+                </view>
+              </view>
+            </view>
+            <view class="comment" wx:if="{{v.comments.length}}">
+              <view class="trigon"></view>
+              <view class="comment-list">
+                <view class="comment-item" wx:for="{{v.comments}}" wx:for-item="i" wx:for-index="key">
+                  <text selectable="true" class="username" bindtap="toOtherperson" data-mid="{{i.from_mid}}">{{i.from_name}}</text>
+                  <text selectable="true" wx:if="{{i.to_name}}">回复</text>
+                  <text selectable="true" class="username" wx:if="{{i.to_name}}" bindtap="toOtherperson" data-mid="{{i.to_mid}}">{{i.to_name}}</text>
+                  <text selectable="true" class="username">：</text>
+                  <text selectable="true" class="new-item-des-pre" bindtap="replyInfo" data-from_name="{{i.from_name}}" data-k="{{k}}" data-cateid="{{v.cateid}}" data-from_mid="{{i.from_mid}}" data-art_id="{{v.id}}">{{i.content}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="forbid-info" wx:if="{{v.status == 2}}">警告：{{v.hint}}</view>
+            <image class="forbid-icon" src="/images/pingbi.png" wx:if="{{v.status == 2}}"></image>
+          </view>
+          <!--消息end-->
+        </view>
+
+
+      </view>
+    </view>
+    <form class='form' report-submit="true" bindsubmit="{{hint ? 'replyInfoRequest' : 'formSubmit'}}">
+      <view class="inputtext" wx:if="{{focus}}">
+        <input placeholder="{{hint ? hint : '评论'}}" name="content" placeholder-style="color:#aaaaaa;" focus="{{focus}}" bindblur="bindblur" />
+        <button class="send" size="mini" formType="submit" bindtap="inputValue">发送</button>
+      </view>
+    </form>
+
+    <view class="tips" wx:if="{{more}}">
+      <view class="line"></view>
+      <view class="noinfo-text">没有更多了</view>
+      <view class="line"></view>
+    </view>
+  </view>
+
+</view>
+<view class="tips" wx:if="{{empty}}">
+  <view class="line"></view>
+  <view class="noinfo-text">抱歉！这家伙比较懒，啥都没有发</view>
+  <view class="line"></view>
+</view>

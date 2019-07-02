@@ -1,0 +1,83 @@
+.list {
+  background: #fff;
+  border-top: 1px solid #eaeaea;
+}
+
+.list-item {
+  display: flex;
+  padding: 30rpx;
+  position: relative;
+}
+
+.list-item-lf {
+  flex: 4;
+}
+
+.list-item-rt {
+  padding-top: 8rpx;
+  flex: 2;
+  text-align: right;
+}
+
+.avatar {
+  border-radius: 100%;
+  margin-right: 16rpx;
+}
+
+.name {
+  font-size: 30rpx;
+}
+
+.info, .status-end {
+  font-size: 24rpx;
+  color: #a0a0a0;
+}
+
+.date {
+  font-size: 24rpx;
+  color: #a0a0a0;
+}
+
+.status-end {
+  margin-top: 6rpx;
+}
+
+button {
+  line-height: 1.8;
+  padding: 0;
+  border-radius: 2px;
+}
+
+button::after {
+  border: none;
+}
+
+.status-start, .status-end {
+  font-size: 24rpx;
+  color: #a0a0a0;
+  width: 78rpx;
+  position: absolute;
+  bottom: 30rpx;
+}
+
+.status-start {
+  right: 110rpx;
+}
+
+.status-end {
+  right: 20rpx;
+}
+
+.hint {
+  position: relative;
+  font-size: 15rpx;
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  background-color: red;
+  color: #fff;
+  border-radius: 100%;
+  text-align: center;
+  top:15rpx;
+  left:62rpx;
+}

@@ -1,0 +1,105 @@
+.flexrow{
+  align-items: flex-start;
+}
+.order{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #fff;
+  display: flex;
+}
+.order-txt{
+  flex: 1;
+}
+.order-btn{
+  flex: 0 0 200rpx;
+  width: 200rpx;
+  line-height: 90rpx;
+  padding: 0;
+}
+button{
+  border-radius: 0;
+  background-color: #fa521e;
+  font-size: 28rpx;
+  color: #fff;
+}
+button::after {
+  border: none;
+  
+}
+.order-txt{
+  padding-left: 20rpx;
+  color: #888;
+}
+.order-txt text{
+  color: #fa521e;
+}
+.shop-wp{
+  background: #fff;
+}
+.shop-name{
+  padding: 20rpx;
+}
+.shop-p-pic{
+  width: 150rpx;
+  height: 150rpx;
+  flex: 0 0 150rpx;
+  border: 1px solid #eaeaea;
+}
+.shop-de{
+  padding: 20rpx;
+}
+.shop-p-info,.shop-p-edit{
+  padding-left: 20rpx;
+}
+.shop-p-info{
+  flex: 1;
+}
+.shop-p-edit{
+  flex: 0 0 184rpx;
+  width: 184rpx;
+  text-align: right;
+}
+.shop-p-tag{
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 20rpx;
+}
+.shop-p-price{
+  font-size: 24rpx;
+}
+.cal-wp{
+  width: 164rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.cal-wp text{
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  border-radius: 4rpx;
+}
+.cal-number{
+  width: 80rpx;
+  border: 2rpx solid #ddd;
+  box-sizing: border-box;
+  line-height: 36rpx;
+}
+.cal-btn{
+  width: 40rpx;
+  height: 36rpx;
+  line-height: 32rpx;
+}
+.p-add-icon text{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 16rpx;
+}
+.p-add-icon .iconfont{
+  width: 40rpx;
+  height: 40rpx;
+}

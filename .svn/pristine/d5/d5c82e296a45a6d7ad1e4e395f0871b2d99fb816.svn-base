@@ -1,0 +1,50 @@
+<view class="mefabupage">
+  <view class="new-box">
+    <view class="new-item">
+      <image bindtap="toOtherperson"  class="avatar" src="/images/avatar.jpg"></image>
+      <view class="new-item-info">
+        <view class="flexbox">
+          <view class="new-item-name">
+            <text selectable="true" class="nickname">白杨</text>
+             
+            <image class="lvicon" src="/images/lv1.png"></image>
+          </view>
+          <text selectable="true" class="category-name">其他</text>
+        </view>
+        <view class="new-item-des" bindtap="toDetail">
+           <text selectable="true" class="new-item-des-pre">十年修的赵启平，百年修的王柏川，千年修的包亦凡，万年修的谭宗明......
+           </text>
+        </view>
+        <view class="onepic">
+          <image class="new-item-pic" mode="widthFix" src="/images/tupian2.jpg"></image>
+        </view>
+        <view class="location" bindtap="toMap">
+          <image class="iconfont" src="/images/add_address_blue.png"></image><text selectable="true">常营民族家园</text>
+        </view>
+        <view class="flexbox">
+          <view class="new-item-time">13分钟前</view>
+          <view class="useractive">
+            <view class="user-item">
+              <image class="md-iconfont" src="/images/icon_eye.png"></image>
+              <text selectable="true" class="number"> {{v.click}}</text>
+            </view>
+            <view class="user-item" bindtap="praiseAdd" data-nickname="{{v.nickName}}" data-cateid="{{v.cateid}}" data-img="{{v.avatarUrl}}" data-art_id="{{v.id}}" data-k="{{k}}">
+              <view class="icon-zan" hover-class="icon-zan-red"></view>
+              <text selectable="true" class="number zannumber">{{v.praise}}</text>
+            </view>
+            <view class="user-item" data-k="{{k}}" data-cateid="{{v.cateid}}" data-art_id="{{v.id}}" bindtap="comment">
+              <image class="md-iconfont" src="/images/icon-pinglun.png"></image>
+            </view>
+          </view>
+        </view> 
+        <view class="comment">
+          <view class="trigon"></view>
+          <view class="comment-list">
+            <view class="comment-item"><text selectable="true" class="username">小高：</text>是你送的吗，大连首富</view>
+            <view class="comment-item"><text selectable="true" class="username">雷彩虹：</text>美美的本人呢</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="topwrap">
+    <view class="title">金币总额(金币)</view>
+    <view class="total">{{totalGold}}</view>
+  </view>
+  <form class='form' catchsubmit="formSubmit">
+    <view class="tel-wrap">
+      <view class="tel-box border-1px-b">
+        <view class="flexrow">
+          <view class="left">微信号</view>
+          <view class="middle"><input name="wechatid" placeholder="请输入您的微信号，以方便微信提现" placeholder-style="color:#a0a0a0;"/></view>
+        </view>
+      </view>
+      <view class="tel-box">
+        <view class="flexrow">
+          <view class="left">金额</view>
+          <view class="middle">
+            可提现10元
+          <!-- <input name="withdrawmoney"  placeholder="可提现10元" placeholder-style="color:#a0a0a0;"/> -->
+          
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="validbtn">
+      <button type="default" size="default" class="" formType="submit" disabled="">立即提现</button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,103 @@
+.border-1px-t::after,.border-1px-b::after{
+  border-color: rgba(7, 17, 27, .15);
+}
+page{
+  padding-top: 30rpx;
+}
+
+.avatar{
+  width: 130rpx;
+  height: 130rpx;
+  flex: 0 0 130rpx;
+  border: 1px solid #b2b2b2;
+  border-radius: 10rpx;
+}
+.conwrap{
+  background-color: #fff;
+  margin-bottom: 40rpx;
+}
+.flexnormal{
+  display: flex;
+  flex-direction: row;
+  padding: 24rpx 28rpx;
+}
+.card-wrap{
+  display: flex;
+  flex-direction: column;
+  padding-left: 25rpx;
+  flex: 1;
+}
+.card-name{
+  font-size: 32rpx;
+  padding-top: 6rpx;
+  padding-bottom: 14rpx;
+}
+.card-phone{
+  padding-top: 14rpx;
+  padding-bottom: 6rpx;
+}
+.btn{
+  background: #eee;
+  color: #999;
+  border-radius: 6rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  overflow: inherit;
+}
+.btncolor{
+  background: #0097ff;
+  color: #fff;
+}
+.hidden{
+  display: none;
+}
+.cardpadding{
+  padding: 0 25rpx;
+}
+.cardpadding .flexrow{
+  padding: 14rpx 0;
+  overflow: hidden;
+}
+.card-item-name{
+  font-size: 32rpx;
+  flex: 0 0 120rpx;
+}
+.fontred{
+  color: red;
+}
+.cardmore{
+  padding: 14rpx 25rpx;
+  display: flex;
+}
+.card-textarea{
+  padding-top: 8rpx;
+}
+textarea{
+  padding: 6rpx 20rpx 10rpx 0; 
+  min-height: 120rpx;
+}
+.create-wrap{
+  padding: 0 25rpx;
+}
+.createdbtn{
+  width: 100%;
+}
+.flexbox{
+  padding: 14rpx 0;
+  align-items: center;
+}
+.alldishid{
+  font-size: 32rpx;
+}
+.validbtn{
+  border: 1px solid #b2b2b2;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 24rpx;
+}
+.alltop{
+  align-items: flex-start;
+}

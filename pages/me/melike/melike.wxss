@@ -1,0 +1,41 @@
+page{
+  background: #fff;
+}
+.lk-item{
+  border-bottom: 1px solid #eee;
+  padding: 20rpx;
+}
+.lk-flex{
+  display: flex;
+}
+.lk-name,.lk-btn{
+  flex: 1;
+}
+.lk-name{
+  margin-left: 20rpx;
+}
+.avatar{
+  border-radius: 100%;
+}
+.username{
+  font-weight: bold;
+  margin: 8rpx 0;
+}
+.userinfo{
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.lk-btn{
+  text-align: right;
+}
+.lk-btn-txt{
+  display: inline-block;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: #58ad45;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 15rpx;
+  border-radius: 6rpx;
+  margin: 17rpx 0;
+}

@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="comment-star" >
+        <view class="comment-txt">描述相符</view>
+        <view class="star-pos" >
+            <view class="starsM  {{flag>=1? '': 'hideStar'}}"  bindtap="changeColor1"></view>
+            <view class="starsM  {{flag>=2? '': 'hideStar'}}"  bindtap="changeColor2"></view>
+            <view class="starsM  {{flag>=3? '': 'hideStar'}}"  bindtap="changeColor3"></view>
+            <view class="starsM  {{flag>=4? '': 'hideStar'}}"  bindtap="changeColor4"></view>
+            <view class="starsM  {{flag>=5? '': 'hideStar'}}"  bindtap="changeColor5"></view>
+        </view>
+    </view>
+  <form class='form' report-submit="true" bindsubmit="formSubmit">
+  <input name="cateid" value="{{cateid}}"  style="display:none"/>
+    <textarea selectable="true" bindinput="textareaValue"  class="textarea" name="info"  placeholder="评价不低于10个字" auto-height="true" maxlength="-1" />
+
+    <view class="picList">
+      <view class="add-pics" mode="center" wx:for="{{tempFilePaths}}" wx:for-item="v" wx:for-index="k"  wx:if='{{v}}' >
+        <image bindtap="clickImage" mode="aspectFill" class="add-iconList" src="{{v}}" data-src="{{v}}"></image>
+        <view class="delete" bindtap="deletePic" wx:if='{{v}}' data-k='{{k}}'>
+        <image src="/images/delete.png" class="deicon"></image></view>
+      </view>
+
+      <view class="add-pic" bindtap="getUploadFile" wx:if='{{!satisfy}}'>
+        <image class="add-icon" src="/images/category_add.png"></image>
+      </view>
+    </view>
+
+    <view class="add-list">
+      <view class="add-item">
+        <view class="flexbox"  bindtap="chooseLocation">
+          <view class="flexrow">
+            <image src="/images/add_address.png" class="iconfont minmargin"></image>{{address}}</view>
+          <image  class="iconfont" src="/images/right.png"></image>
+        </view>
+      </view>
+     
+    </view>
+    <button class="addbtn {{textareaValue.length&&inputValue.length?'':'disabled'}}" formType="submit" disabled="{{textareaValue.length&&inputValue.length?'':'disabled'}}">立即发布</button>
+  </form>
+ 
+</view>

@@ -1,0 +1,27 @@
+.container{
+  padding-bottom: 120rpx;
+}
+.message-item{
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  padding: 10rpx 20rpx;
+}
+.right{
+  flex-direction:row-reverse;
+}
+.message-item-text{
+  margin: 0 20rpx;
+  background-color: #fff;
+  padding: 16rpx 18rpx;
+  border-radius: 8rpx;
+  border: 1px solid #eee;
+  font-size: 32rpx;
+  max-width: 460rpx;
+  overflow:hidden;
+}
+.message-item-logo{
+  width: 80rpx;
+  height: 80rpx;
+  flex: 0 0 80rpx;
+}

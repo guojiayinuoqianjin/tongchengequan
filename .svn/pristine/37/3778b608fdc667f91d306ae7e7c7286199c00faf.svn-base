@@ -1,0 +1,140 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+  <form class='form' bindsubmit="formSubmit">
+    <view class="activity">
+      <view class="activity-top">
+        <swiper indicator-dots="true" interval="5000" duration="1000" indicator-color="rgba(255, 255, 255, .4)" indicator-active-color="rgba(255, 255, 255, .9)" autoplay="true">
+          <block wx:for="{{info.images}}" wx:for-item="v">
+            <swiper-item>
+              <image class="activity-pic" src="{{host}}{{v}}" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="activity-bottom">
+        <view class="activity-title">{{info.title}}</view>
+        <view class="activity-subtitle">{{info.intro}}</view>
+        <view class="activity-money">
+          <text selectable="true"  wx:if="{{info.price}}">{{info.price}}元</text>
+          <text selectable="true" wx:if="{{!info.price}}">免费</text>
+          <text selectable="true" class="activity-num">已报名: {{info.participation_num}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="activity-item">
+      <view class="flexbox">
+        <view class="avatar-con">
+          <image class="avatar" bindtap="toOtherperson" data-mid="{{v.mid}}" src="{{v.avatarUrl}}" wx:for="{{memberList}}" wx:for-item="v" wx:for-index="k"></image>
+        </view>
+        <view class="avatar-txt">
+          <text selectable="true">{{info.click}}人感兴趣</text>
+          <image class="iconfont" src="/images/right.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="act-shop">
+      <view class="act-shop-item border-1px-b">
+        <image class="iconfont" src="/images/time.png"></image>
+        <text selectable="true">{{info.start_time}} 至 {{info.end_time}}</text>
+      </view>
+      <view class="act-shop-item" data-tel="{{info.tel}}" bindtap="callPhone">
+        <image class="iconfont" src="/images/add_tel.png"></image>
+        <text selectable="true">{{info.tel}}</text>
+      </view>
+    </view>
+
+  <!-- {{is_height? '':'heightauto'}} -->
+    <view class="ctrlheight {{is_height? 'heightauto':''}}">
+      <view class="activity-item">
+        <view class="activity-bg">
+          <view class="activity-text">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+          </view>
+        </view>
+        
+      </view>
+      <view class="unfold {{is_height? 'ctrlunfold':''}}" bindtap="unfold"><text selectable="true" class="zhankai">展开阅读</text><text selectable="true" class="hebing">合并阅读</text></view>
+    </view>
+
+    <view class="activity-item" wx:if="{{info.shop_info}}">
+      <view class="activity-shop-info">商家信息</view>
+      <view class="activity-text">
+        {{info.shop_info}}
+      </view>
+    </view>
+
+    <view class="activity-item">
+      <view class="success-tl border-1px-b">报名已通过（{{info.participation_num}}人）</view>
+      <view class="success-item border-1px-b"  wx:for="{{memberJoinList}}" wx:for-item="v" wx:for-index="k" wx:if="{{k < 3}}" bindtap="toOtherperson" data-mid="{{v.mid}}">
+      <image class="avatar" src="{{v.avatarUrl}}" ></image><text selectable="true">{{v.nickName}}</text>
+      <view class="success-date">{{v.created_at}}</view></view>
+
+      <view wx:if="{{is_show}}" >
+       <view class="success-item border-1px-b" wx:for="{{memberJoinList}}" wx:for-item="v" wx:for-index="k" wx:if="{{k >=3}}" bindtap="toOtherperson" data-mid="{{v.mid}}"><image class="avatar" src="{{v.avatarUrl}}"></image><text selectable="true">{{v.nickName}}</text><view class="success-date">{{v.created_at}}</view></view>
+
+      </view>
+      <view class="view-more" bindtap="viewMore" wx:if="{{!is_show  && memberJoinList.length > 3}}"><text selectable="true">查看更多</text> <image class="iconfont" src="/images/down.png"></image></view>
+      <view class="view-more" bindtap="viewLess" wx:if="{{is_show}}"><text selectable="true">收起</text> <image class="iconfont" src="/images/up.png"></image></view>
+    </view>
+
+<view class="activity-item"  wx:if="{{info.is_discounts == 2}}">
+      <view class="success-tl border-1px-b">我邀请的好友（{{memberShareList.length}}人）</view>
+      <view class="from-me">
+        <view class="inlineavatar" wx:for="{{memberShareList}}" wx:for-item="v" wx:for-index="k" bindtap="toOtherperson" data-mid="{{v.mid}}">
+          <image class="avatar" src="{{v.avatarUrl}}"></image><image class="newuser" wx:if="{{v.is_one}}" src="/images/xin.png"></image><!-- 新图标 -->
+        </view>
+      </view>
+    </view>
+
+    <view class="activity-item">
+      <view class="success-tl border-1px-b">留言 <text selectable="true" class="send-message" data-act_id="{{info.id}}" style="color:red" bindtap="comment">发布留言</text></view>
+
+      <view class="border-1px-b" wx:for="{{comments}}" wx:for-item="v" wx:for-index="k">
+        <view class="flexrow">
+          <image class="mes-user-avatar" src="{{v.avatarUrl}}"></image>
+          <view class="mes-user-send">
+            <view class="mes-user-name">{{v.nickName}}
+            <!-- <view class="comment-mes"><image class="iconfont" src="/images/icon-pinglun.png"></image><text selectable="true">回复</text></view>--></view> 
+            <view class="mes-time">{{v.created_at}}</view>
+            <view class="mes-info">
+             {{v.content}}
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="tips">
+        <view class="line"></view>
+        <view class="noinfo-text">没有更多了</view>
+        <view class="line"></view>
+      </view>
+    </view>
+
+    <view class="activity-btn">
+      <view class="activity-wrap">
+        <view class="activity-links"><navigator url="../index/index" open-type="switchTab">首页</navigator></view>
+        <view class="activity-status">
+          <form class='form' report-submit="true" bindsubmit="participateActivities">
+            <button class="" formType="submit" bindtap="inputValue" wx:if="{{!memberStatus && info.status==1}}">我要报名</button> 
+            <view wx:if="{{memberStatus  && info.status==1}}">活动参与中...</view>  
+            <view wx:if="{{!info.status}}">活动已结束</view> 
+            <view wx:if="{{info.status == 2}}">活动未开始</view> 
+          </form>
+        </view>
+        <view class="activity-links"><navigator url="../activitylist/activitylist" open-type="navigate">更多>></navigator></view>
+      </view>
+      
+    </view>
+  </form>
+   <form class='form' report-submit="true" bindsubmit="{{hint ? 'replyInfoRequest' : 'formSubmit'}}">
+    <view class="inputtext"  wx:if="{{focus}}">
+      <input placeholder="{{hint ? hint : '评论'}}" name="content" placeholder-style="color:#aaaaaa;"  focus="{{focus}}" bindblur="bindblur" />
+      <!--bindconfirm="{{hint ? 'replyInfoRequest' : 'formSubmit'}}" -->
+      <button class="send" size="mini" formType="submit"  bindtap="inputValue">发送</button>
+    </view>
+  </form>
+  <view class="rightcenter" wx:if="{{info.is_discounts == 2}}">
+    <image class="rightcenter-img" src="/images/jian.png" bindtap="onShareAppMessage"></image>
+    <button open-type="share" class="rightcenter-btn"></button>
+  </view>
+</view>

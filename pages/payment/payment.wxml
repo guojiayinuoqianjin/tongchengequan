@@ -1,0 +1,63 @@
+<view class="container">
+  <form class="form" report-submit="true" bindsubmit="">
+     <!-- <image class="line" src="/images/line.png"></image>  -->
+
+    <view class="shop-wp"  wx:for="{{order.order}}" wx:for-item="v" wx:for-index="k">
+      <view class="border-1px-b">
+        <view class="shop-name">{{v.shop_name}}</view>
+      </view>
+      <view class="shop-de border-1px-b">
+        <view class="flexrow">
+          <image class="shop-p-pic" src="{{host}}{{v.image}}"></image>
+          <view class="shop-p-info">
+            <view>{{v.goods_name}}</view>
+            <!-- <view class="shop-p-tag">尺码: S</view> -->
+          </view>
+          <view class="shop-p-edit">
+            <view class="shop-p-price">¥ {{v.goods_price}}</view>
+            <view class="cal-wp">
+              <!-- <text class="cal-btn">-</text> -->
+              <text class="cal-number">{{v.goods_count}}</text>
+              <!-- <text class="cal-btn">+</text> -->
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="shop-de border-1px-b">
+        <view class="flexbox">
+          <view>店铺合计</view>
+          <view>¥{{order.shop_price}}</view>
+        </view>
+      </view>
+
+      <view class="shop-de">
+        <view class="flexbox">
+          <view>金币抵现</view>
+          <view class="p-add-icon" wx:if="{{memberGold}}">
+           <image class="iconfont" bindtap='minusGold' src="/images/jian_icon.png"></image> 
+            <text>  {{order.gold}}  </text>
+            <image class="iconfont" bindtap='addGold' src="/images/add.png"></image>
+          </view>
+          <view class="p-add-icon" wx:if="{{!memberGold}}">
+            <text style="color:red">您当前金币不足100,无法邸现,点我赚金币</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="shop-de border-1px-b" wx:if="{{reduced}}">
+        <view class="flexbox">
+          <view>优惠金额</view>
+          <view>¥{{reduced}}</view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="order">
+      <view class="order-txt">总价
+        <text>¥ {{order.total_price}}</text>
+      </view>
+      <button class="order-btn"  bindtap='requestPayment' formType="submit">提交订单</button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,88 @@
+.activity{
+  background: #fff;
+  margin-bottom: 14rpx;
+  box-sizing: border-box;
+  padding: 20rpx 16rpx;
+}
+.activity-top{
+  position: relative;
+  height: 350rpx;
+}
+.activity-pic{
+  width: 718rpx;
+  height: 350rpx;
+}
+.activity-opcity{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .3);
+}
+.activity-in{
+  position: absolute;
+  top: 40rpx;
+  left: -12rpx;
+  width: 220rpx;
+  background: #e09e06;
+  color: #fff;
+  padding: 0 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-top-right-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .3);
+
+}
+.activity-in::after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 3px solid #e09e06;
+  left: 0;
+  bottom: -6px;
+  border-color: #e09e06 #e09e06 transparent transparent;
+}
+.activity-bottom{
+  padding-top: 20rpx;
+}
+.activity-title{
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.activity-subtitle{
+  color: #a1a1a1;
+  font-size: 24rpx;
+  margin: 10rpx 0;
+}
+.activity-money{
+  color: #a1a1a1;
+  font-size: 24rpx;
+}
+.activity-money text{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #58ad45;
+  margin-right: 15rpx;
+}
+.activity-in text{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+.activity-end{
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+}
+.endimage{
+  width: 168rpx;
+  height: 128rpx;
+  opacity: 0.9;
+}

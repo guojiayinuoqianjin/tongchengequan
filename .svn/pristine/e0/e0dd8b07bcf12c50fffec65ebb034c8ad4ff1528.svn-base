@@ -1,0 +1,91 @@
+page{
+  background: #f9f9f9;
+}
+.wrapper{
+  background: #fff;
+  padding: 40rpx 20rpx 40rpx 40rpx;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20rpx;
+}
+.avatar,.new-date{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  flex: 0 0 120rpx;
+}
+.new-date{
+  font-size: 50rpx;
+  color: #000;
+}
+.new-date text{
+  font-size: 26rpx;
+  padding-left: 5rpx;
+}
+.wrapper .flexbox{
+  align-items: center;
+}
+.userinfo{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+  color: #666;
+}
+.name{
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.meicon .iconfont{
+  margin-right: 10rpx;
+}
+.personal-wrap{
+  width: 100%;
+  height: 360rpx;
+  overflow: hidden;
+  position: relative;
+}
+.personal-wrap .personal-bg{
+  margin-bottom: 80rpx;
+  width: 100%;
+}
+.per-info{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 80rpx 0 30rpx;
+  text-align: center;
+}
+.per-info .name{
+  color: #fff;
+  margin-top: 20rpx;
+}
+.per-info .avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+}
+.per-info-text{
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.per-block{
+  display: inline-block;
+  margin: 0 20rpx;
+}
+.per-block image{
+  margin-right: 6rpx;
+}
+.info-date{
+  flex: 0 0 100rpx;
+}
+.nickName{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.delete-btn{
+  margin-left: 0;
+}

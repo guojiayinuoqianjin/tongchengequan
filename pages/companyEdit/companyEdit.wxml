@@ -1,0 +1,90 @@
+<view class="container">
+  <form class='form' bindsubmit="formSubmit" report-submit="true">
+    <view class="conwrap border-1px-t">
+      <view class="cardpadding border-1px-b">
+     
+        <view class="flexrow alltop">
+          <view class="card-item-name">简介
+            <text class="fontred">*</text>
+          </view>
+          <view class="pos">
+            <textarea selectable="true" name="intro" value="{{intro}}" class="textarea" placeholder="请输入公司简介" auto-height="true" maxlength="-1" />
+          </view>
+        </view>
+        <!-- <view class="abletatal">0/200</view> -->
+      </view>
+    </view>
+
+    <view class="conwrap border-1px-t">
+      <view class="cardpadding border-1px-b">
+        <view class="picwrap">
+          <view class="flexrow">
+            <view class="contentname">公司Logo图片</view>
+            <!-- <view class="contentnumber">0/1</view> -->
+          </view>
+
+          <view class="add-pics" mode="center"  wx:for="{{logoTempFilePaths}}" wx:for-item="v" wx:for-index="k" wx:if='{{v}}'>
+            <image bindtap="clickImage" mode="aspectFill" class="add-iconList" wx:if="{{v}}" src="{{v}}" data-src="{{v}}"></image>{{v}}
+            <view class="delete" bindtap="deletePic"  data-types="logo"  wx:if='{{v}}' data-k='{{k}}'>
+              <image src="/images/delete.png" class="deicon"></image>
+            </view>
+          </view>
+          <view class="add-pic"  bindtap="getUploadFile" data-types="logo" data-count="1" wx:if='{{logoTempFilePaths.length < 1 }}'>
+            <image class="add-icon" src="/images/category_add.png"></image>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <view class="conwrap border-1px-t">
+      <view class="cardpadding border-1px-b">
+        <view class="picwrap">
+          <view class="flexrow">
+            <view class="contentname">公司宣传banner图片（高320*宽640）</view>
+            <!-- <view class="contentnumber">0/1</view> -->
+          </view>
+
+          <view class="add-pics" mode="center" wx:for="{{bannerTempFilePaths}}" wx:for-item="v" wx:for-index="k" wx:if='{{v}}'>
+            <image bindtap="clickImage" mode="aspectFill" class="add-iconList" src="{{v}}" data-src="{{v}}"></image>
+            <view class="delete" bindtap="deletePic"  data-types="banner"  wx:if='{{v}}' data-k='{{k}}'>
+              <image src="/images/delete.png" class="deicon"></image>
+            </view>
+          </view>
+          <view class="add-pic"  bindtap="getUploadFile" data-types="banner" data-count="3" wx:if='{{ bannerTempFilePaths.length < 3 }}'>
+            <image class="add-icon" src="/images/category_add.png"></image>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <view class="conwrap border-1px-t">
+      <view class="cardpadding border-1px-b">
+        <view class="picwrap">
+          <view class="flexrow">
+            <view class="contentname">公司产品展示图片</view>
+            <!-- <view class="contentnumber">0/8</view> -->
+          </view>
+
+             <view class="add-pics" mode="center" wx:for="{{productTempFilePaths}}" wx:for-item="v" wx:for-index="k" wx:if='{{v}}'>
+            <image bindtap="clickImage" mode="aspectFill" class="add-iconList" src="{{v}}" data-src="{{v}}"></image>
+            <view class="delete" bindtap="deletePic"  data-types="product"  wx:if='{{v}}' data-k='{{k}}'>
+              <image src="/images/delete.png" class="deicon"></image>
+            </view>
+          </view>
+          <view class="add-pic"  bindtap="getUploadFile" data-types="product" data-count="8" wx:if='{{productTempFilePaths.length < 8 }}'>
+            <image class="add-icon" src="/images/category_add.png"></image>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <view class="create-wrap">
+      <button class="createdbtn" type="primary" size="default" form-type="submit">
+        <text>保存</text>
+      </button>
+    </view>
+  </form>
+</view>

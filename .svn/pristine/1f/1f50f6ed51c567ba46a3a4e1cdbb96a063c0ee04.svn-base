@@ -1,0 +1,65 @@
+.topwrap{
+  background: #ff532a;
+  padding-top: 20rpx;
+  padding-bottom: 30rpx;
+  margin-bottom: 14rpx;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+.title{
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, .7);
+}
+.total{
+  color: #fff;
+  font-size: 80rpx;
+}
+.tel-wrap{
+  background: #fff;
+  padding: 0 30rpx;
+}
+.tel-box{
+  height: 86rpx;
+  line-height: 86rpx;
+}
+.left{
+  flex: 0 0 130rpx;
+  width: 130rpx;
+}
+.right{
+  flex: 0 0 250rpx;
+  width: 250rpx;
+  text-align: right;
+}
+.middle{
+  flex: 1;
+  color: #888888;
+}
+.btn{
+  background: #0097ff;
+  border-radius: 6rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 28rpx;
+  display: inline-block;
+  color: #fff;
+  font-size: 24rpx;
+  overflow: inherit;
+}
+.hidden{
+  display: none;
+}
+.validbtn{
+  text-align: center;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+button::after{
+  border: none;
+}
+button[type="default"]{
+  background: #2772ff;
+  color: #fff;
+}

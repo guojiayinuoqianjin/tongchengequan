@@ -1,0 +1,90 @@
+<view class="container withdraw">
+  <view class="topwrap">
+    <view class="title">金币总额(金币)</view>
+    <view class="total">1000</view>
+    <view class="day">
+      <view class="shouru">
+        <text selectable="true">昨日收入：</text>
+        <text selectable="true">4元</text>
+        <text selectable="true"> ｜ 今日收入：</text>
+        <text selectable="true">0元</text>
+      </view>
+    </view>
+    <view class="jinbitips">
+      <text selectable="true">金币兑换规则：100金币＝1元，满5000金币即可提现</text>
+    </view>
+  </view>
+  <view class='flexrow admintab'>
+    <view class="flex-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">所有订单</view>
+    <view class="flex-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">已核销订单</view>
+    <view class="flex-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">可提现订单</view>
+  </view>
+  <view class="list">
+    <view class="list-item border-1px-b">
+      <view class="list-item-lf">
+        <view class="flexrow">
+          <image class="avatar" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epLzkhjlVtyouAicchJ2wUcTJG3sBa45At1qHvQlj6jiaFFtB5XgTIJnCbkvibJZN2gAClWjYb8ouzRg/0"></image>
+          <view class="list-info">
+            <view class="name flexbox">
+              2人香辣虾套餐
+              <view class="add">
+                +30<image class="iconfont" src="/images/money.png"></image>
+              </view>
+              <view class="jian" wx:if="{{v.status == 2}}">
+                -{{v.num}}<image class="iconfont" src="/images/money.png"></image>
+              </view>
+            </view>
+            <view class="info">2018-01-22 16:30:03</view>
+          </view>
+        </view>
+      </view>
+      <view class="list-item-rt">
+        <view>未核销</view>
+        <view>未提现</view>
+      </view>
+    </view>
+    <view class="list-item border-1px-b">
+      <view class="list-item-lf">
+        <view class="flexrow">
+          <image class="avatar" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epLzkhjlVtyouAicchJ2wUcTJG3sBa45At1qHvQlj6jiaFFtB5XgTIJnCbkvibJZN2gAClWjYb8ouzRg/0"></image>
+          <view class="list-info">
+            <view class="name flexbox">
+              2人香辣虾套餐
+              <view class="add">
+                +30<image class="iconfont" src="/images/money.png"></image>
+              </view>
+              <view class="jian" wx:if="{{v.status == 2}}">
+                -{{v.num}}<image class="iconfont" src="/images/money.png"></image>
+              </view>
+            </view>
+            <view class="info">2018-01-22 16:30:03</view>
+          </view>
+        </view>
+      </view>
+      <view class="list-item-rt">
+        <view>未核销</view>
+        <view>未提现</view>
+      </view>
+    </view>
+    <view class="tips" wx:if="{{more}}">
+      <view class="line"></view>
+      <view class="noinfo-text">没有更多了</view>
+      <view class="line"></view>
+    </view>
+  </view>
+</view>
+
+<view class="btn">
+  <view class="flexrow">
+    <view class="btn-item record border-1px-t" bindtap="reCord">
+      <view class="border-1px-r">提现记录</view>
+    </view>
+    <view class="btn-item btndisabled" wx:if="{{totalGold < 1000}}">
+      <view class="border-1px-t">满5000金币即可提现</view>
+    </view>
+    <view class="btn-item btnprimary" style="background:#FF532A" bindtap="getFans">我的粉丝</view>
+    <view class="btn-item btnprimary" data-total="{{totalGold}}" wx:if="{{totalGold >= 5000}}" bindtap="toWithdraw">提现</view>
+     <view class="btn-item btnprimary" style="background:#9F9F9F" data-total="{{totalGold}}" wx:if="{{totalGold < 5000}}">提现</view>
+  </view>
+</view>
+

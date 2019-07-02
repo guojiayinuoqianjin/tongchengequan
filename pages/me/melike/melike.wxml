@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="lk-ls">
+    <!--one start-->
+    <view class="lk-item">
+      <view class="lk-flex">
+        <image class="avatar" src="/images/ha.png"></image>
+        <view class="lk-name">
+          <view class="username">王芙娟</view>
+          <view class="userinfo">笑一笑十年少</view>
+        </view>
+        <view class="lk-btn"><text selectable="true" class="lk-btn-txt">取消关注</text></view>
+      </view>
+    </view>
+    <!--one end-->
+    <!--two start-->
+    <view class="lk-item">
+      <view class="lk-flex">
+        <image class="avatar"  src="/images/ha.png"></image>
+        <view class="lk-name">
+          <view class="username">王芙娟</view>
+          <view class="userinfo">笑一笑十年少</view>
+        </view>
+        <view class="lk-btn"><text selectable="true" class="lk-btn-txt">取消关注</text></view>
+      </view>
+    </view>
+    <!--one end-->
+  </view>
+</view>

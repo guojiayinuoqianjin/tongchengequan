@@ -1,0 +1,25 @@
+page{
+  background: #fff;
+}
+.flexrow{
+  padding: 20rpx 30rpx;
+}
+.left,.right{
+  flex: 1;
+}
+.right{
+  text-align: right
+}
+.left{
+  font-size: 24rpx;
+  color: #a0a0a0;
+}
+.text{
+  font-size: 24rpx;
+  color: #a0a0a0;
+}
+.money{
+  font-size: 30rpx;
+  color: #ff532a;
+  font-weight: bold;
+}

@@ -1,0 +1,91 @@
+.mycardwrap{
+  position: relative;
+  background-color: #fff;
+  margin: 30rpx;
+  padding: 30rpx;
+}
+.carditem{
+  padding: 10rpx 0;
+}
+.cardpadding{
+  padding-bottom: 20rpx;
+}
+.cardtitle{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.cardsubtitle{
+  font-size: 24rpx;
+  padding-left: 20rpx;
+  color: #8a8a8a;
+}
+.cardname,.cardinfo{
+  display: inline-block;
+}
+.cardname{
+  width: 100rpx;
+  font-weight: bold;
+}
+.mycardavatar{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border: 1px solid #b2b2b2;
+  border-radius: 10rpx;
+}
+.xiaochengshiid{
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  font-size: 20rpx;
+  color: #b2b2b2;
+}
+.activity-item{
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  margin-bottom: 14rpx;
+}
+.flexbox{
+  align-items: center;
+  padding-bottom: 12rpx;
+}
+.avatar{
+  border-radius: 100%;
+  margin-right: 10rpx;
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-top: 20rpx;
+}
+.font32{
+  font-size: 32rpx;
+}
+.nocardwrap{
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 100rpx;
+}
+.nocard-img{
+  width: 180px;
+  height: 150px;
+  margin-bottom: 30rpx;
+}
+.createdbtn{
+  margin:30rpx;
+  padding-left:14px;
+  padding-right:14px;
+  box-sizing:border-box;
+  font-size:18px;
+  text-align:center;
+  text-decoration:none;
+  line-height:2.55555556;
+  border-radius:5px;
+  -webkit-tap-highlight-color:transparent;
+  overflow:hidden;
+  color:#FFFFFF;
+  background-color:#1AAD19;
+}
+

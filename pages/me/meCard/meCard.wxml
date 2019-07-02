@@ -1,0 +1,89 @@
+<view class="container" wx:if="{{status}}" style="overflow:hidden">
+  <view class="mycardwrap">
+    <view class="carditem cardpadding">
+      <text class="cardtitle">{{info.name}}</text>
+      <text class="cardsubtitle">{{info.position}}</text>
+    </view>
+    <view class="carditem">
+      <text class="cardname">电话:</text>
+      <text class="cardinfo">{{info.phone}}</text>
+    </view>
+    <view class="carditem">
+      <text class="cardname">公司:</text>
+      <text class="cardinfo">{{info.company}}</text>
+    </view>
+    <view class="carditem" wx:if="{{info.email}}">
+      <text class="cardname">Email:</text>
+      <text class="cardinfo">{{info.email}}</text>
+    </view>
+
+    <view style="height:auto;margin-top:10rpx" wx:if="{{info.business}}">
+      <view style="float:left;width:13%;font-weight:bold;">业务:</view>
+      <view style="float:left;width:70%">
+        <text class="cardinfo">{{info.business}}</text>
+      </view>
+      <view style=" clear: both; "></view>
+    </view>
+
+    <view>
+      <image class="mycardavatar" src="{{info.avatarUrl}}"></image>
+    </view>
+    <view class="xiaochengshiid" bindtap="canvasPic">
+      <view>
+        <image class="code-icon" src="/images/xiaochengxu.png"></image>
+      </view>
+      <text>生成名片码</text>
+    </view>
+  </view>
+  <view class="tastatus">
+    <view class="flexrow">
+      <view class="tastatus-item bgyellow" bindtap="toOtherperson" data-mid="{{info.mid}}">
+        <view>
+          <text wx:if="{{info.mid != mid}}">Ta</text>
+          <text wx:if="{{info.mid == mid}}">我</text>的动态</view>
+        <image class="ta-icon" src="/images/dongtai.png"></image>
+      </view>
+      <view class="tastatus-item bgblue" bindtap="toCardLibrary" data-mid="{{info.mid}}">
+        <view>
+          <text wx:if="{{info.mid != mid}}">Ta</text>
+          <text wx:if="{{info.mid == mid}}">我</text>的人脉</view>
+        <image class="ta-icon" src="/images/renmai.png"></image>
+      </view>
+      <view class="tastatus-item bgred" bindtap="toShop" data-mid="{{info.mid}}" wx:if="{{info.is_company || info.mid == mid}}">
+        <view>
+          <text wx:if="{{info.mid != mid}}">Ta</text>
+          <text wx:if="{{info.mid == mid}}">我</text>的企业</view>
+        <image class="ta-icon" src="/images/dianpu.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="activity-item" wx:if="{{clickList.length}}">
+    <view class="flexbox">
+      <view class="font32">{{clickList.length}}人感兴趣</view>
+      <view class="avatar-txt">
+        <!-- <text>{{clickList.length}}人感兴趣</text> -->
+      </view>
+    </view>
+    <view class="avatar-con border-1px-t">
+      <image class="avatar" wx:for="{{clickList}}" wx:for-item="v" bindtap="toOtherperson" data-mid="{{v.mid}}" src="{{v.avatarUrl}}"></image>
+    </view>
+  </view>
+
+  <view class="cardfixed">
+    <view class="flexrow">
+      <view class="cardfixed-item" bindtap="toPersonalcard" wx:if="{{info.mid == mid}}">编辑名片</view>
+      <view class="cardfixed-item" bindtap="cardExchange" data-to_mid="{{info.mid}}" wx:if="{{info.mid != mid && cardStatus == 1}}">交换名片</view>
+      <view class="cardfixed-item" bindtap="createCard" wx:if="{{info.mid != mid && cardStatus == 3}}">创建我的名片</view>
+      <view class="cardfixed-item" bindtap="savePhone" wx:if="{{info.mid != mid}}">保存到手机通讯录</view>
+      <button class="cardfixed-item minwidth" open-type="share">发送给好友</button>
+    </view>
+  </view>
+  <canvas style="width: 375px; height: 667px;  position: absolute;  left:-120%" canvas-id="myCanvas">
+  </canvas>
+</view>
+<!-- 没有名片 需创建一张  -->
+<view class="nocardwrap" wx:if="{{!status}}">
+  <image class="nocard-img" src="/images/nocard.png"></image>
+  <view class="nocard-txt">您还没有名片，现在去创建一张～</view>
+  <view class="createdbtn" bindtap="createCard">立即创建</view>
+</view>

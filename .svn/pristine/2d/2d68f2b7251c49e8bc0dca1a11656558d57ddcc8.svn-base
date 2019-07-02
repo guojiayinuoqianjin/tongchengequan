@@ -1,0 +1,10 @@
+.personal-wrap{
+  width: 100%;
+  height: 400rpx;
+  overflow: hidden;
+  position: relative;
+}
+.personal-wrap .personal-bg{
+  margin-bottom: 80rpx;
+  width: 100%;
+}

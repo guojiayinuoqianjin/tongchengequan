@@ -1,0 +1,40 @@
+<view class="container">
+  <form class='form' report-submit="true" bindsubmit="formSubmit">
+  <input name="cateid" value="{{cateid}}"  style="display:none"/>
+    <textarea selectable="true" bindinput="textareaValue"  class="textarea" name="info"  placeholder="发布 {{catename}} 信息" auto-height="true" maxlength="-1" />
+
+    <view class="picList">
+      <view class="add-pics" mode="center" wx:for="{{tempFilePaths}}" wx:for-item="v" wx:for-index="k"  wx:if='{{v}}' >
+        <image bindtap="clickImage" mode="aspectFill" class="add-iconList" src="{{v}}" data-src="{{v}}"></image>
+        <view class="delete" bindtap="deletePic" wx:if='{{v}}' data-k='{{k}}'>
+        <image src="/images/delete.png" class="deicon"></image></view>
+      </view>
+
+      <view class="add-pic" bindtap="getUploadFile" wx:if='{{!satisfy}}'>
+        <image class="add-icon" src="/images/category_add.png"></image>
+      </view>
+    </view>
+
+    <view class="add-list">
+      <view class="add-item">
+        <view class="flexbox"  bindtap="chooseLocation">
+          <view class="flexrow">
+            <image src="/images/add_address.png" class="iconfont minmargin"></image>{{address}}</view>
+          <image  class="iconfont" src="/images/right.png"></image>
+        </view>
+      </view>
+      <view class="add-item">
+        <view class="flexbox">
+          <view class="flexrow">
+            <image src="/images/add_tel.png" class="iconfont minmargin"></image>
+            <input bindinput="inputValue"  name="phone" value="{{phone}}"  placeholder="请输入您的手机号码"/>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <button class="addbtn {{textareaValue.length&&inputValue.length?'':'disabled'}}" formType="submit" disabled="{{textareaValue.length&&inputValue.length?'':'disabled'}}">立即发布</button>
+  </form>
+  <view class="help">
+  <image class="iconfont minmargin" src="/images/help.png"></image>{{detail}}</view>
+</view>

@@ -1,0 +1,48 @@
+<view class="common-header">
+  <form class='form' bindsubmit="search">
+    <view class="header">
+      <view class="search">
+        <image class="icon" src="/images/search.png" />
+        <input bindinput="inputSearch" name="keywords" placeholder="{{placeholder}}" />
+      </view>
+      <button class="green" formType="submit" bindtap="submitInfo" wx:if="{{searchkeyword.length}}" size="mini" hover-class="hover" loading="" plain="" disabled="{{!searchkeyword.length}}" bindtap="doSearch">搜索
+      </button>
+    </view>
+  </form>
+</view>
+
+<view class="container">
+  <view class="cardly-wrap">
+    <view class="flexrow border-1px-b cardly-item" data-mid="{{v.mid}}" bindtap="openCard" wx:for="{{list}}" wx:for-item="v" wx:for-index="k">
+      <image class="cardly-logo" src="{{v.avatarUrl}}"></image>
+      <view class="cardly-info">
+        <view class="cardly-name">{{v.name}}</view>
+        <view class="cardly-subtitle"><text class="name">职务：</text>{{v.position}}</view>
+        <view class="cardly-subtitle"><text class="name">公司：</text>{{v.company}}</view>
+        <view class="cardly-subtitle" wx:if="{{v.business}}"><text class="name">业务：</text>{{v.business}}</view>
+      </view>
+      <view class="companyicon">
+         <view class="companyicon_line" wx:if="{{v.heat}}" >
+          <image class="icon-company" src="/images/hots.png"></image>
+          <text style="font-size:18rpx;color:#8A8A8A">{{v.heat}}</text>
+        </view>
+         <view wx:if="{{v.is_company}}"><image class="companyImg" src="/images/qiye2.png"></image></view>  
+      
+      </view>
+
+    </view>
+
+
+  </view>
+</view>
+<view class="tips" wx:if="{{more}}">
+  <view class="line"></view>
+  <view class="noinfo-text">没有更多了</view>
+  <view class="line"></view>
+</view>
+
+<view class="tips" wx:if="{{search}}">
+  <view class="line"></view>
+  <view class="noinfo-text">抱歉！啥都没搜索到</view>
+  <view class="line"></view>
+</view>

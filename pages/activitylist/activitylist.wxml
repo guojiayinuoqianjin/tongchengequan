@@ -1,0 +1,46 @@
+<view class="stv-container">
+<view class="cate">
+  <view class="tab-bar" style="width:{{cateList.length * 140}}rpx">
+    <view wx:for="{{cateList}}" wx:for-item="v" wx:for-index="k" wx:key="unique" data-index="{{k}}" data-cateid="{{v.id}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: 140rpx;">
+      <text>{{v.catename}}</text>
+    </view>
+    <view wx:if="{{cateList.length}}" style="width:130rpx; left: {{offset}}rpx" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
+  </view>
+ </view>
+
+  <view class="scroll-view" style="margin-top:80rpx">
+    <view bindtouchstart="handlerStart" catchtouchmove="handlerMove" bindtouchcancel="handlerCancel" bindtouchend="handlerEnd" class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}">
+      <scroll-view style="height:100%;width:100%;" scroll-y>
+        <view class="activity" bindtap="toActivity" data-id='{{v.id}}' data-k='{{k}}' wx:for="{{list}}" wx:for-item="v" wx:for-index="k">
+          <view class="activity-top">
+            <image class="activity-pic" src="{{host}}{{v.cover_images}}"></image>
+            <view class="activity-opcity" wx:if="{{!v.status || v.status ==2 }}"></view>
+            <view class="activity-in">
+              <image class="iconfont" src="/images/zan_white.png"></image>
+              <text selectable="true">{{v.click}}人感兴趣</text>
+            </view>
+            <view class="activity-end">
+              <image class="endimage" wx:if="{{!v.status}}" src="/images/end.png"></image>
+              <image class="endimage" wx:if="{{v.status == 2}}" src="/images/nostart.png"></image>
+            </view>
+          </view>
+          <view class="activity-bottom">
+            <view class="activity-title">{{v.title}}</view>
+            <view class="activity-subtitle">时间 {{v.start_time}} 至 {{v.end_time}}</view>
+            <view class="activity-money">
+            <view style="float:left"> <text selectable="true">{{v.price == 0 ? '免费' : '¥ '+v.price+' 元'}}</text></view>
+            <view style="float:right">{{v.price == 0 ? '已报名' : '已售'}}：{{v.sold_count}}</view>
+             
+            </view>
+          </view>
+        </view>
+        <view class="tips" wx:if="{{more}}">
+          <view class="line"></view>
+          <view class="noinfo-text">没有更多了</view>
+          <view class="line"></view>
+        </view>
+      </scroll-view>
+
+    </view>
+  </view>
+</view>

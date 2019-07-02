@@ -1,0 +1,298 @@
+@import "../../wxParse/wxParse.wxss";
+page{
+  padding-bottom: 100rpx;
+}
+swiper{
+  height: 350rpx;
+}
+.activity{
+  background: #fff;
+  margin-bottom: 14rpx;
+}
+.activity-top{
+  position: relative;
+  height: 350rpx;
+}
+.activity-pic{
+  width: 750rpx;
+  height: 350rpx;
+}
+.activity-bottom{
+  padding: 20rpx;
+}
+.activity-title{
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.activity-subtitle{
+  color: #a1a1a1;
+  font-size: 24rpx;
+  margin: 10rpx 0;
+}
+.activity-money{
+  color: #a1a1a1;
+  font-size: 24rpx;
+}
+.activity-money text{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #58ad45;
+  margin-right: 15rpx;
+}
+.activity-in text{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+.activity-item{
+  background-color: #fff;
+  padding: 20rpx;
+  margin-bottom: 14rpx;
+}
+
+.activity-shop{
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  text-align: center;
+  padding-top: 40rpx;
+  font-size: 50rpx;
+  color: #f04043;
+}
+.activity-shop-info{
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+.activity-text{
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #888;
+}
+.activity-btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  z-index: 9;
+  color: #fff;
+  background-color: #e09e06;
+}
+.activity-wrap{
+  display: flex;
+}
+.activity-links{
+  flex: 1;
+  color: rgba(255, 255, 255, .6);
+}
+.activity-status{
+  flex: 2;
+  border: 1px dotted rgba(255, 255, 255, .2);
+  border-width: 0 1px;
+  font-size: 32rpx;
+}
+button{
+  border-radius: 0;
+  color: #fff;
+  background-color: #e09e06;
+}
+button::after{
+  border: none; 
+}
+.activity-item .flexbox{
+  align-items: center;
+}
+.activity-item .avatar{
+  border-radius: 100%;
+  margin-right: 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.from-me{
+  padding: 20rpx 0 0;
+}
+.from-me .avatar{
+  margin-bottom: 10rpx;
+}
+.act-shop{
+  background: #fff;
+  padding: 0 20rpx;
+  margin-bottom: 14rpx;
+}
+.act-shop-item{
+  padding: 20rpx 0;
+}
+.act-shop-item image{
+  margin-right: 15rpx;
+}
+.act-shop-item text{
+  font-size: 24rpx;
+}
+.activity-money .activity-num{
+  font-size: 24rpx;
+  color: #a1a1a1;
+  font-weight: normal;
+}
+.success-tl{
+  padding-left: 15rpx;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 20rpx;
+}
+.success-tl::before{
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 32rpx;
+  background-color: #58ad45;
+  left: 0;
+  top: 4rpx;
+}
+.send-message{
+  position: absolute;
+  right: 0;
+}
+.success-item{
+  padding: 10rpx 0;
+  position: relative;
+}
+.success-date{
+  position: absolute;
+  right: 0;
+  top: 26rpx;
+  font-size: 24rpx;
+  color: #a1a1a1;
+}
+.success-item .avatar{
+  width: 60rpx;
+  height: 60rpx;
+}
+.success-item text{
+  display: inline-block;
+  font-size: 24rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.activity-item .flexrow{
+  align-items: flex-start;
+  padding: 20rpx 0;
+}
+.mes-user-avatar{
+   width:80rpx;
+   height: 80rpx; 
+   flex: 0 0 80rpx;
+}
+.mes-user-send{
+  padding-left: 20rpx;
+}
+.mes-time{
+  font-size: 24rpx;
+  color: #a1a1a1;
+  margin: 10rpx 0;
+}
+.mes-user-name{
+  position: relative;
+}
+.comment-mes{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24rpx;
+  color: #576b95;
+  
+}
+.comment-mes text{
+  padding-left: 8rpx;
+}
+.view-more{
+  text-align: center;
+  font-size: 24rpx;
+  color: #58ad45;
+  padding-top: 20rpx;
+}
+.is_show{
+  height: auto;
+}
+.view-more text{
+  display: inline-block;
+}
+.view-more .iconfont{
+  width: 22rpx;
+  height: 22rpx;
+  padding-left: 10rpx;
+}
+.send{
+  border-radius:10rpx;
+}
+.ctrlheight{
+  height: 1000rpx;
+  overflow: hidden;
+  margin-bottom: 14rpx;
+  position: relative;
+}
+.ctrlheight .activity-item{
+  margin-bottom: 0;
+}
+.ctrlheight.heightauto{
+  height: auto;
+}
+.unfold{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  height: 80rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.unfold .hebing{
+  display: none;
+}
+.unfold .zhankai{
+  display: block;
+}
+.unfold.ctrlunfold .zhankai{
+  display: none;
+}
+.unfold.ctrlunfold .hebing{
+  display: block;
+}
+.rightcenter{
+  position: fixed;
+  top: 62%;
+  right: 0rpx;
+  width: 150rpx;
+  height: 131rpx;
+}
+.rightcenter-img{
+  width: 150rpx;
+  height: 131rpx;
+}
+.rightcenter-btn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  opacity: 0;
+}
+.inlineavatar{
+  display: inline-block;
+  margin-right: 6rpx;
+  position: relative;
+}
+.newuser{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 0;
+}

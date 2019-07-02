@@ -1,0 +1,35 @@
+page{
+  padding-bottom: 100rpx;
+}
+.slide-image{
+  width:750rpx;
+  height:350rpx;
+}
+.company-info{
+  background: #fff;
+  margin-top: 1%;
+  text-align: center;
+  padding: 30rpx;
+}
+.company-text{
+  text-indent:2em;
+  padding-top: 30rpx;
+  display: block;
+  text-align: left;
+  line-height: 1.8;
+}
+.logo{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius:100%;
+}
+.pic-wrap{
+  padding: 4% 2%;
+}
+.pic-item{
+  width: 46%;
+  height: 350rpx;
+  float: left;
+  margin: 0 2% 4%;
+  border-radius:6rpx;
+}

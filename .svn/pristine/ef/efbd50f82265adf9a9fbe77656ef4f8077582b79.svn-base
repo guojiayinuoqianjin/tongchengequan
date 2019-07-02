@@ -1,0 +1,555 @@
+var app = getApp();
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var login = require('../../utils/login');
+var request = require('../../utils/request.js');
+
+Page({
+  data: {
+    focus: false,
+    isShow: false,
+    total: 0,
+    current_page: 1,
+    // address: '定位中...',
+    icons: [],
+    animationData: {},
+    ctrlshare: false
+  },
+
+  //分享
+  onShareAppMessage: function (res) {
+    var that = this
+    var userInfo = wx.getStorageSync('userInfo');
+    return {
+      title: this.data.shareInfo,
+      imageUrl:'/images/index.png',
+      path: '/pages/index/index?send_mid=' + userInfo.mid,
+      success: function (res) {
+        // 转发成功
+        that.setData({
+          ctrlshare: false
+        })
+      },
+    }
+
+  },
+
+  onShow: function () {
+    //主要是判断是否从文章详情页返回的时候，浏览量加1
+    if (app.globalData.dataKey) {
+      this.data.list[app.globalData.dataKey].click++
+      if (app.globalData.praise) {//如果在详情页点赞了，点赞量也加1
+        this.data.list[app.globalData.dataKey].praise++
+      }
+      this.setData({
+        list: this.data.list,
+      })
+      app.globalData.dataKey = ''
+      app.globalData.praise = ''
+    }
+
+    //新发布信息 返回首页刷新
+    if (app.globalData.skip) {
+      this.data.list = ''
+      this.data.current_page = 1
+      this.request(1)
+      app.globalData.skip = ''
+    }
+
+    //修改城市后，首页刷新
+    if (app.pages == 'address') {
+      this.data.list = ''
+      this.data.current_page = 1
+      this.request(1)
+      app.globalData.skip = ''
+      app.pages = ""
+    }
+
+    this.setData({
+      'address': app.globalData.city
+    })
+    //参加活动后，返回首页报名加1
+    if (app.globalData.act_apply) {
+      this.data.list[app.globalData.act_k].participation_num++
+    }
+
+    //参加活动后，返回首页感兴趣加1
+    if (app.globalData.act_member_insert) {
+      this.data.list[app.globalData.act_k].click++
+    }
+
+    app.globalData.act_apply = ''
+    app.globalData.act_member_insert = ''
+    this.setData({
+      list: this.data.list,
+    })
+
+    //红包动画效果
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease',
+    })
+
+    this.animation = animation
+
+    animation.scale(0.4, 0.4).step()
+
+    this.setData({
+      animationData: animation.export()
+    })
+
+    setTimeout(function () {
+      // animation.rotate(-45).step()
+      animation.scale(1, 1).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 1000)
+  },
+
+  //首页分享引导图
+  rotateAndScale: function () {
+    // 旋转同时放大
+    this.animation.rotate(45).scale(2, 2).step()
+    this.setData({
+      animationData: this.animation.export()
+    })
+  },
+
+  onLoad: function (options) {
+    this.getIndexCateList();
+    //推荐人用户MID
+    if (options.send_mid) {
+      app.globalData.send_mid = options.send_mid
+    } else {
+      app.globalData.send_mid = 0
+    }
+
+    // wx.showLoading({
+    //   title: '定位中...',
+    //   mask: true
+    // });
+
+    var userInfo = wx.getStorageSync('userInfo');
+    //调用API从本地缓存中获取数据
+    if (!userInfo) {
+      this.getUserLoginInfo(options);
+    } else {
+      app.globalData.currentMid = userInfo.mid //用户ID
+      // if (!app.globalData.lng) {
+      //   this.getLocation();
+      // } else {
+      //   this.request(1);
+      // }
+      this.request(1);
+    }
+  },
+
+  //获得首页分类列表
+  getIndexCateList: function () {
+    var that = this;
+    request.request({
+      method: 'indexCategoryList', data: '', success(res) {
+        wx.stopPullDownRefresh()
+        that.setData({
+          host: app.globalData.serverHost,
+          icons: res.data.categoryList,
+          shareInfo: res.data.shareInfo,
+          is_hongbao: res.data.is_hongbao
+        })
+      }
+    });
+  },
+
+  getUserLoginInfo: function (cb) {
+    var that = this
+    var status = login.login({
+      globalData: app.globalData, success(result) {
+        if (result) {
+          that.onLoad(cb)
+        }
+      }, send_mid: app.globalData.send_mid//分享者的ID
+    })
+  },
+
+  getLocation: function (cb) {
+    var that = this
+    //获取到当前用户的经纬度
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        app.globalData.lat = res.latitude;
+        app.globalData.lng = res.longitude;
+        var qqmapsdk = new QQMapWX({
+          key: 'BJFBZ-ZFTHW-Y2HRO-RL2UZ-M6EC3-GMF4U'
+        });
+        qqmapsdk.reverseGeocoder({
+          poi_options: 'policy=2',
+          get_poi: 1,
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (res) {
+            //当前区域，主要获得市，区
+            app.globalData.city = res.result.address_component.city
+            app.globalData.district = res.result.address_component.district
+            that.setData({
+              address: res.result.address_component.city
+            })
+            that.request(1);
+          }
+        })
+      }
+    })
+  },
+
+  //发送请求,获得文章列表
+  request: function (currentPage) {
+    if (!this.data.noShow && !app.globalData.skip) {//上拉或者下拉的时候不显示加载提示框
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
+      });
+    }
+    //mid主要判断显示删除按钮的
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      mid: userInfo.mid
+    })
+    var that = this;
+    var lng = app.globalData.lng;
+    var lat = app.globalData.lat;
+    var city = app.globalData.city;
+    var data = { 'currentPage': currentPage, 'lng': lng, 'lat': lat, 'city': city };
+    request.request({
+      method: 'getArtAndActList', data: data, success(res) {
+        wx.hideLoading()
+        wx.hideLoading()
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+        var list;
+        if (that.data.list) {
+          list = that.data.list.concat(res.data.articleList)
+        } else {
+          list = res.data.articleList
+        }
+        that.setData({
+          list: list,
+          host: app.globalData.serverHost,
+          totalPage: res.data.totalPage,
+        })
+      }
+    });
+  },
+
+  //上拉刷新
+  onPullDownRefresh: function () {
+    this.data.noShow = true;//上拉的时候不显示加载提示框
+    this.data.list = '';
+    this.data.current_page = 1
+    this.setData({ //上拉刷新隐藏没有更多了
+      more: false
+    })
+    this.request(1);
+  },
+
+
+  //下拉加载
+  onReachBottom: function () {
+    this.data.noShow = true;//下拉的时候不显示加载提示框
+    this.data.current_page += 1;//当前页默认为1，每次请求前加1
+    var totalPage = this.data.totalPage
+    if (this.data.current_page <= totalPage) {
+      this.request(this.data.current_page);
+    } else {
+      this.setData({
+        more: true
+      })
+    }
+  },
+
+  //浏览图片
+  clickImage: function (e) {
+    var current = e.target.dataset.src;
+    var imgs = e.target.dataset.imgs;
+    for (var i in imgs) {
+      imgs[i] = app.globalData.serverHost + imgs[i]
+    }
+    wx.previewImage({
+      current: current,
+      urls: imgs
+    });
+  },
+
+  //获得评论信息
+  comment: function (e) {
+    this.data.art_id = e.currentTarget.dataset.art_id;
+    this.data.cateid = e.currentTarget.dataset.cateid;
+    this.data.artk = e.currentTarget.dataset.k;
+    this.setData({
+      focus: true
+    });
+  },
+
+  //评论
+  formSubmit: function (e) {
+    var that = this
+    var formId = e.detail.formId;
+    var content = e.detail.value;
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = { 'formId': formId, 'content': content.content, 'art_id': this.data.art_id, 'cateid': this.data.cateid };
+    wx.showLoading({
+      title: '提交中...',
+    })
+    request.request({
+      method: 'articleCommentAdd', data: data, success(res) {
+        if (res.data.code == 0) {
+          wx.hideLoading()
+          res.data.curComment[0].nickName = userInfo.nickName
+          that.data.list[that.data.artk].comments = that.data.list[that.data.artk].comments.concat(res.data.curComment)
+          that.setData({
+            list: that.data.list
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'loading',
+            duration: 2000
+          })
+        }
+      }
+    });
+  },
+
+  //获得评论的回复信息
+  replyInfo: function (e) {
+    this.data.art_id = e.currentTarget.dataset.art_id;
+    this.data.to_mid = e.currentTarget.dataset.from_mid;
+    this.data.to_name = e.currentTarget.dataset.from_name;
+    this.data.artk = e.currentTarget.dataset.k;
+    this.data.cateid = e.currentTarget.dataset.cateid;
+    //console.log(app.globalData.currentMid)
+    //console.log(this.data.to_mid)
+    //禁止自己回复自己
+    if (app.globalData.currentMid != this.data.to_mid) {
+      this.setData({
+        focus: true,
+        hint: "回复" + this.data.to_name + '：'
+      });
+    } else {
+      this.setData({
+        focus: false,
+      });
+    }
+  },
+
+  //发送评论回复请求
+  replyInfoRequest: function (e) {
+    var that = this
+    var formId = e.detail.formId;
+    var content = e.detail.value;
+    var userInfo = wx.getStorageSync('userInfo');
+    wx.showLoading({
+      title: '提交中...',
+    })
+    var data = { 'formId': formId, 'content': content.content, 'art_id': this.data.art_id, 'cateid': this.data.cateid, 'to_mid': this.data.to_mid, 'to_name': this.data.to_name };
+    request.request({
+      method: 'commentReplyAdd', data: data, success(res) {
+        if (res.data.code == 0) {
+          wx.hideLoading()
+          that.data.list[that.data.artk].comments = that.data.list[that.data.artk].comments.concat(res.data.curReply)
+          that.setData({
+            list: that.data.list
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'loading',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+
+  toReleaseDetail: function () {
+    wx.navigateTo({
+      url: '../releaseinfo/releaseDetail/releaseDetail'
+    })
+  },
+
+  //打开地图
+  toMap: function (e) {
+    var address = e.currentTarget.dataset.address;
+    var lat = e.currentTarget.dataset.lat;
+    var lng = e.currentTarget.dataset.lng;
+    wx.openLocation({
+      latitude: lat,
+      longitude: lng,
+      scale: 18,
+      name: address
+    })
+  },
+
+  onfocus: function () {
+    this.setData({
+      focus: true
+    });
+  },
+
+  bindblur: function () {
+    this.setData({
+      focus: false,
+      hint: false
+    });
+  },
+
+  toAll: function () {
+    wx.navigateTo({
+      url: '../all/all'
+    })
+  },
+
+  //跳转到分类
+  linkCategory: function (e) {
+    var cateid = e.currentTarget.dataset.cateid;
+    if (cateid == 9) {
+      wx.navigateTo({
+        url: '../friend/friend?cateid=' + cateid
+      })
+    } else {
+      wx.navigateTo({
+        url: '../category/category?cateid=' + cateid
+      })
+    }
+  },
+
+  //个人中心
+  toOtherperson: function (e) {
+    var to_mid = e.currentTarget.dataset.mid;
+    wx.navigateTo({
+      url: '../otherperson/otherperson?to_mid=' + to_mid
+    })
+  },
+
+  //点赞
+  praiseAdd: function (e) {
+    var that = this
+    var nickName = e.currentTarget.dataset.nickname;
+    var art_id = e.currentTarget.dataset.art_id;
+    var cateid = e.currentTarget.dataset.cateid;
+    var k = e.currentTarget.dataset.k;
+    var data = { 'art_id': art_id, 'cateid': cateid };
+    request.request({
+      method: 'goldRandGive', data: data, success(res) {
+
+        if (res.data.code == 7) {
+          wx.showToast({
+            title: res.data.message,
+            image: '/images/ha.png',
+            icon: 'success',
+            duration: 2000
+          })
+          return false;
+        }
+        if (res.data.code == 8) {
+          wx.showToast({
+            title: '谢谢您为' + nickName + ' 点出来' + res.data.message + '个金币',
+            icon: 'success',
+            image: '/images/money.png',
+            duration: 2000
+          })
+        }
+        if (res.data.code == 0) {
+          wx.showToast({
+            title: nickName + '：么么，谢谢您的赞',
+            image: '/images/hua.png',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+
+        that.data.list[k].praise += 1;
+        that.setData({
+          list: that.data.list
+        })
+
+      }
+    });
+  },
+
+  //删除文章
+  delart: function (e) {
+    var that = this
+    var art_id = e.currentTarget.dataset.art_id;
+    var cateid = e.currentTarget.dataset.cateid;
+    var k = e.currentTarget.dataset.k;
+    wx.showModal({
+      title: 'e圈提示',
+      content: '您确定要删除此动态',
+      success: function (res) {
+        if (res.confirm) {
+          var data = { art_id: art_id, cateid: cateid };
+          request.request({
+            method: 'articleDel', data: data, success(res) {
+              if (res.data.code == 0) {
+                that.data.list.splice(k, 1)
+                that.setData({
+                  list: that.data.list
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.message,
+                  image: '/images/ha.png',
+                  icon: 'success',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        } else if (res.cancel) {
+          //console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+
+  //文章详情
+  artDetail: function (e) {
+    var art_id = e.currentTarget.dataset.art_id;
+    var dataKey = e.currentTarget.dataset.k;//用来记录数组下标，返回的时候可以浏览量加1
+    wx.navigateTo({
+      url: '../detail/detail?art_id=' + art_id + '&dataKey=' + dataKey
+    })
+  },
+
+  // 定位
+  tapAddress: function () {
+    wx.navigateTo({
+      url: '../address/address',
+    })
+  },
+
+  //活动链接
+  toActivity: function (e) {
+    var act_id = e.currentTarget.dataset.id;
+    var act_k = e.currentTarget.dataset.k;
+    wx.navigateTo({
+      url: '../activitydetail/activitydetail?act_id=' + act_id + '&act_k=' + act_k,
+    })
+  },
+
+  blockshare: function () {
+    this.setData({
+      ctrlshare: true
+    })
+  },
+
+  hiddenshare: function () {
+    this.setData({
+      ctrlshare: false
+    })
+  }
+
+})

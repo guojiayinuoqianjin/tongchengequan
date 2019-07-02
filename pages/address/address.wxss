@@ -1,0 +1,102 @@
+.addresslist{
+  border-bottom: 1px solid #D8D8D8;
+  height:110rpx;
+  line-height: 35rpx;
+  margin: 0px 10px;
+}
+.add-adr{
+    margin-top:10px;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    background: #fff;
+    width: 100%;
+    font-size: 26rpx;
+    color: #58ad45;
+}
+.add-adr-icon{
+    width: 34rpx;
+    height: 34rpx;
+    vertical-align: middle;
+    margin-right: 6rpx;
+}
+
+view,text{
+	box-sizing: border-box;
+}
+
+.curaddr{
+	color: #58ad45;
+}
+.botbtn{
+	width: 100%;
+	/*position: fixed;*/
+	bottom: 40rpx;
+	font-size: 28rpx;
+	color: #fff;
+	padding: 0 16rpx;
+	text-align: center;
+	margin: 100rpx 0;
+}
+.newaddr{
+	width: 100%;
+	display: block;
+	background: #58ad45;
+	height: 60rpx;
+	line-height: 60rpx;
+	border-radius: 10rpx;
+}
+.newaddr image{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+}
+.newaddr text{
+	vertical-align: middle;
+}
+.geo{
+	position: absolute;
+	right: 16rpx;
+	color: #58ad45;
+	top: 50%;
+	margin-top: -20rpx;
+}
+.geo image{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+}
+.geo text{
+	vertical-align: middle;
+}
+.wrapper{
+  padding: 28rpx 16rpx;
+  box-sizing: border-box;
+  background: #fff;
+  width: 100%;
+  font-size: 26rpx;
+  position: relative;
+}
+.title{
+	width: 100%;
+	font-size: 24rpx;
+	color: #8a8a8a;
+	padding: 26rpx 16rpx 16rpx;
+}
+.list .item{
+	border-bottom: 1px solid #eee;
+	padding: 16rpx 0;
+}
+.list .item text{
+	display: block;
+	margin: 10rpx 0;
+	padding: 0 16rpx;
+}
+.list .item .itemtitle{
+	font-size: 28rpx;
+	color: #333333;
+	
+}
+.list .item .address{
+	color: #6b6b6b;
+}

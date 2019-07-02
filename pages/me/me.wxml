@@ -1,0 +1,115 @@
+<view class="container">
+  <view class="wrapper">
+    <view class="flexrow">
+      <image class="avatar" src="{{userinfo.avatarUrl}}"></image>
+      <view class="user-wrap">
+        <view class="userinfo">
+          <text selectable="true" class="name">{{userinfo.nickName}}</text>
+          <image class="lvicon" wx:if="{{info.empirical}}" src="{{host}}{{info.empirical}}"></image>
+        </view>
+        <view class="daily">已成为e圈会员{{info.time}}天</view>
+      </view>
+      
+      <view class="threeclum">
+        <!-- 未绑定 -->
+        <view class="flexbox" bindtap="toValid" wx:if="{{!userinfo.phone}}">
+          <view class="meicon">
+            <image class="iconfont" src="/images/phone.png"></image>
+            <text selectable="true">手机号</text>
+          </view>
+          <view class="righttext">
+            <text selectable="true" class="bluefont">未认证</text>
+          </view>
+          <image class="iconfont" src="/images/right.png"></image>
+        </view>
+        <!-- 已绑定 -->
+        <view class="" bindtap="toValid" wx:if="{{userinfo.phone}}">
+          <image class="iconfont" src="/images/phone.png"></image>
+          <text selectable="true">手机已认证</text>
+          <!-- <view class="righttext">
+            <text selectable="true">{{userinfo.phone}}</text>
+          </view> -->
+        </view>
+      </view>  
+    </view>
+  </view>
+  <view class="me-block">
+    <view class='flexrow'>
+      <view class='clum-item' data-index='0' data-status='1' bindtap='toOrder'>
+        <view class='tabs-num'>{{info.orderCount}}</view>
+        <image class='clum-item-icon' src='/images/daifukuan.png'></image>
+        待付款
+      </view>
+      <view class='clum-item' data-index='1' data-status='2' bindtap='toOrder'>
+        <image class='clum-item-icon' src='/images/daifahuo.png'></image>
+        待发货
+      </view>
+      <view class='clum-item' data-index='2' data-status='5' bindtap='toOrder'>
+        <image class='clum-item-icon' src='/images/daishouhuo.png'></image>
+        待收货
+      </view>
+      <view class='clum-item' data-index='3' data-status='6' bindtap='toOrder'>
+        <image class='clum-item-icon' src='/images/yiwancheng.png'></image>
+        已完成
+      </view>
+    </view>
+  </view>
+  
+  <view class='me-list'>
+    <view class="me-item" bindtap="toMejinbi">
+      <view class="me-item-wp">
+        <image class="me-item-icon" src="/images/me_icon_jinbi.png"></image>
+        <text selectable="true">我的金币</text>
+        <!-- <text selectable="true" class="fontred">({{info.gold}})</text> -->
+      </view>
+    </view>
+
+    <view class="me-item" bindtap="toMefabu">
+      <view class="me-item-wp">
+        <image class="me-item-icon" src="/images/me_icon_fabu.png"></image>
+        <text selectable="true">我的发布</text>
+      </view>
+    </view>
+
+
+    <view class="me-item" bindtap="toLike">
+      <view class="me-item-wp">
+        <image class="me-item-icon" src="/images/me_icon_like.png"></image>
+        <text selectable="true">我的收藏</text>
+      </view>
+    </view>
+
+    <view class="me-item" bindtap="orderCancel">
+      <view class="me-item-wp">
+        <image class="me-item-icon" src="/images/me_icon_hexiao.png"></image>
+        <text>订单核销</text>
+      </view>
+    </view>
+
+    <view class="me-item" bindtap="toMecard">
+      <view class="me-item-wp">
+        <image class="me-item-icon" src="/images/me_icon_mingpian.png"></image>
+        <text>我的名片</text>
+      </view>
+    </view>
+
+    <view class="me-item" bindtap="shopOrder">
+      <view class="me-item-wp">
+        <image class="me-item-icon" src="/images/me_icon_zhangdan.png"></image>
+        <text>商家帐单</text>
+      </view>
+    </view>
+
+    
+
+    
+
+    <!-- <view class="me-item" bindtap="toAbout">
+      <view class="meicon">
+        <image class="iconfont" src="/images/me_icon_about.png"></image>
+        <text selectable="true">关于我们</text>
+      </view>
+    </view> -->
+  </view>
+  <!-- <button class="kefu" open-type="contact">联系客服</button> -->
+</view>

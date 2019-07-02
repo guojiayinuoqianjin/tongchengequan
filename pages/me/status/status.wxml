@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="status">
+    <image class="success" src="/images/success.png"></image>
+    <view class="status-info">
+      <view class="classname">提现申请提交成功</view>
+      <view class="classname">客服会在1-2个工作日内，将提现金额打到您的微信账户</view>
+    </view>
+    <view class="btn">
+      <view class="flexrow">
+        <view class="btn-record" bindtap="toRecord">提现记录</view>
+        <view class="btn-return" bindtap="toMejinbi">返回</view>
+      </view>
+    </view>
+  </view>
+</view>

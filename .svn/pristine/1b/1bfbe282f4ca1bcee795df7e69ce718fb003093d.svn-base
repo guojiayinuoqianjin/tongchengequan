@@ -1,0 +1,279 @@
+.indexpage{
+  margin-top: 14rpx;
+}
+.address{
+	font-size: 30rpx;
+  /*position: fixed;
+  top: 0;*/
+  height: 68rpx;
+  line-height: 68rpx;
+   background: rgba(255,255,255,1); 
+  /* background: #49494d; */
+  width: 100%;
+  padding: 0 16rpx;
+  position: relative;
+  text-align: center;
+ 
+  /*z-index: 100;*/
+}
+.address .icon{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+  margin-right: 6rpx;
+}
+.address text{
+  vertical-align: middle;
+  /* color: #9f9f9f; */
+  color: #58ad45;
+}
+.address .iconfont{
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  margin-top: -16rpx;
+}
+swiper{
+  height: 175px;
+}
+.icons{
+	background: #fff;
+	width: 100%;	
+	overflow: hidden;
+  padding-top: 20rpx;
+  margin-bottom: 14rpx;
+}
+
+.icons .icon {
+	float: left;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 25%;
+	text-align: center;
+  padding-bottom: 30rpx;
+  align-items: center;
+}
+
+.icons .icon image{
+  width: 80rpx;
+  height: 80rpx;
+}
+.icons .icon text {
+	color: #666;
+  display: inline-block;
+  border-radius: 100%;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.p-cate{
+  margin-bottom: 14rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+}
+.p-cate-item{
+  flex: 1;
+  margin: 20rpx 24rpx;
+  text-align: center;
+  background: #75c164;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 10rpx 0 10rpx 54rpx;
+  position: relative;
+}
+.p-cate-pink{
+  background: #fb8989;
+}
+.p-cate-slogan{
+  font-size: 26rpx;
+  color: rgba(255,255,255,.5);
+}
+.p-cate-tl{
+  font-size: 30rpx;
+}
+.p-cate-item image{
+  width: 64rpx;
+  height: 64rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 50%;
+  margin-top: -32rpx;
+}
+.banner{
+  width: 100%;
+  height: 150rpx;
+}
+.useractive{
+  margin-top: 20rpx;
+  position: relative;
+}
+.comment{
+  background: #f3f3f5;
+  margin-top: 16rpx;
+  position: relative;
+}
+.username{
+  color: #576b95;
+}
+.comment-zan{
+  padding: 6rpx 20rpx;
+  border-bottom: 1px solid #dddedf;
+}
+.userzan{
+  color: #576b95;
+}
+.location{
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #576b95;
+}
+.location .iconfont{
+  vertical-align: bottom;
+}
+.number{
+  font-size: 24rpx;
+  color: #576b95;
+}
+.onepic .new-item-pic{
+  width: 500rpx;
+}
+.activity{
+  background: #fff;
+  margin-bottom: 14rpx;
+  box-sizing: border-box;
+  margin-left: -8rpx;
+}
+.activity-top{
+  position: relative;
+  height: 350rpx;
+}
+.activity-pic{
+  width: 718rpx;
+  height: 350rpx;
+}
+.activity-opcity{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .3);
+}
+.activity-in{
+  position: absolute;
+  top: 40rpx;
+  left: -12rpx;
+  width: 220rpx;
+  background: #e09e06;
+  color: #fff;
+  padding: 0 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-top-right-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .3);
+
+}
+.activity-in::after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 3px solid #e09e06;
+  left: 0;
+  bottom: -6px;
+  border-color: #e09e06 #e09e06 transparent transparent;
+}
+.activity-bottom{
+  padding-top: 20rpx;
+}
+.activity-title{
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.activity-subtitle{
+  color: #a1a1a1;
+  font-size: 24rpx;
+  margin: 10rpx 0;
+}
+.activity-money{
+  color: #a1a1a1;
+  font-size: 24rpx;
+}
+.activity-money text{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #58ad45;
+  margin-right: 15rpx;
+}
+.activity-in text{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+.activity-end{
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+}
+.endimage{
+  width: 168rpx;
+  height: 128rpx;
+  opacity: 0.9;
+}
+.rightbottom{
+  position: fixed;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 180rpx;
+  height: 250rpx;
+}
+.sharewrap{
+  position: relative;
+}
+.share{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.closewrap{
+  text-align: right;
+  width: 90%;
+}
+.close{
+  width: 50rpx;
+  height: 50rpx;
+  opacity: .2;
+}
+.share-img{
+  width: 655rpx;
+  height: 717rpx;
+}
+.share{
+  display: none;
+}
+.ctrlshare{
+  display: flex;
+}
+.sharebtn{
+  opacity: 0; 
+  position: absolute;
+  bottom: 0;
+  width: 200rpx;
+  height: 200rpx;
+  background: #fff;
+  left: 50%;
+  margin-left: -100rpx;
+}

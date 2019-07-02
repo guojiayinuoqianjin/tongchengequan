@@ -1,0 +1,38 @@
+page{
+  background: #f9f9f9;
+  box-sizing: border-box;
+}
+.release-tl{
+  text-align: center;
+  padding: 20rpx 0;
+  color: #5b6f97;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+.release-tl text{
+  padding: 0 10rpx;
+}
+.category{
+  overflow: hidden;
+}
+.category-item{
+  width: 50%;
+  margin: 50rpx 0 20rpx;
+  text-align: center;
+  float: left;
+}
+.category-item-name{
+  width: 180rpx;
+  height: 180rpx;
+  line-height: 180rpx;
+  border: 1px solid #ddd;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 100%;
+  color: #58ad45;
+  font-size: 36rpx;
+  margin-bottom: 20rpx;
+}
+.category-item-text{
+  color: #737373;
+}

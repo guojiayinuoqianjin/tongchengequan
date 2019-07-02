@@ -1,0 +1,26 @@
+<view class="container">
+  <swiper indicator-dots="true"
+  autoplay="true" interval="5000" duration="1000">
+    <block>
+      <swiper-item  wx:for="{{info.bannerImages}}" wx:for-item="v" wx:for-index="k">
+        <image src="{{host}}{{v}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="company-info">
+    <image class="logo" wx:if="{{info.logoImages}}" src="{{host}}{{info.logoImages}}"></image>
+    <text class="company-text">{{info.intro}}</text>
+  </view>
+
+  <view class="pic-wrap">
+    <image class="pic-item" wx:for="{{info.productImages}}"  wx:for-item="v" wx:for-index="k" src="{{host}}{{v}}" mode="aspectFill" data-src="{{host}}{{v}}" data-imgs="{{info.productImages}}" bindtap="clickImage"></image>
+
+  </view>
+  <view class="cardfixed"  wx:if="{{mid == info.mid}}">
+    <view class="flexrow">
+      <!-- <view class="cardfixed-item">主页</view> -->
+      <view class="cardfixed-item"  bindtap="companyEdit">编辑企业信息</view>
+    </view>
+  </view>
+</view>

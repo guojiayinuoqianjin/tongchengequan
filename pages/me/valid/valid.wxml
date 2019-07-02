@@ -1,0 +1,25 @@
+<view class="container">
+  <form class='form' bindsubmit="formSubmit">
+    <view class="tel-wrap">
+      <view class="tel-box">
+        <view class="flexrow">
+          <view class="left">手机号</view>
+          <view class="middle"><input name="phone" type="number" bindinput="inputValue"  placeholder="请输入您的手机号码"/></view>
+          <view class="right">
+            <button class="{{selected_get?'btn':'hidden'}}" data-phone="{{phone}}"  bindtap="getValid">获取验证码</button>
+            <button class="{{selected_re?'btn':'hidden'}}" bindtap="countdown">{{second}}s后重新获取</button>
+          </view>
+        </view>
+      </view>
+      <view class="tel-box">
+        <view class="flexrow">
+          <view class="left">验证码</view>
+          <view class="middle"><input name="code" type="number" placeholder="请输入验证码"/></view>
+        </view>
+      </view>
+    </view>
+    <view class="validbtn">
+      <button type="primary" size="mini" class="" formType="submit" disabled="">确定</button>
+    </view>
+  </form>
+</view>

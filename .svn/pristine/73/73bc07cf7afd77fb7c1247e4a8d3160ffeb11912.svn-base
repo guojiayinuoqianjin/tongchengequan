@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 已有名片 -->
+   <view class="mycardwrap"> 
+    <view class="carditem cardpadding"><text class="cardtitle">王芙娟</text><text class="cardsubtitle">前端工程师</text></view>
+    <view class="carditem"><text class="cardname">电话:</text><text class="cardinfo">150-1020-0732</text></view>
+    <view class="carditem"><text class="cardname">公司:</text><text class="cardinfo">河南迅步电子商务有限公司</text></view>
+    <view class="carditem"><text class="cardname">Email:</text><text class="cardinfo">1286846623@qq.com</text></view>
+    <view>
+      <image class="mycardavatar" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epLzkhjlVtyouAicchJ2wUcTJG3sBa45At1qHvQlj6jiaFFtB5XgTIJnCkTiad7EBawzNuHHwNdmAia6Q/0"></image>
+    </view>
+    <view class="xiaochengshiid">
+      <text>小程序码</text>
+    </view>
+  </view>
+
+  <view class="activity-item">
+    <view class="flexbox">
+      <view class="font32">我的人脉</view>
+      <view class="avatar-txt">
+        <text>8人感兴趣</text>
+      </view>
+    </view>
+    <view class="avatar-con border-1px-t">
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+      <image class="avatar" src="/images/ha.png"></image>
+    </view>
+  </view> 
+   <!-- 没有名片 需创建一张 
+   <view class="nocardwrap">
+    <image class="nocard-img" src="/images/nocard.png"></image>
+    <view class="nocard-txt">还没有名片，现在去创建一张～</view>
+    <view class="createdbtn" bindtap="toPersonalcard">立即创建</view>  
+  </view>  -->
+</view>

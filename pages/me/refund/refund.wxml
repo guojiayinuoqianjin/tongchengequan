@@ -1,0 +1,11 @@
+<view class="container">
+  <form class='form' report-submit="true" bindsubmit="formSubmit">
+    <textarea selectable="true" bindinput="textareaValue" class="textarea" name="content" placeholder="请填写退货原因" />
+    <view class="create-wrap" bindtap="verification">
+      <button class="createdbtn" type="primary" size="default" form-type="submit">
+        <text>申请退款</text>
+      </button>
+    </view>
+
+  </form>
+</view>

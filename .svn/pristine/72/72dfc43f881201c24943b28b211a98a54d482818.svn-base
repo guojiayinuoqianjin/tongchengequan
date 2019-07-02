@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="wrapper">
+    <view class="flexbox">
+      <view class="flexrow">
+        <image class="avatar" src="{{userinfo.avatarUrl}}"></image>
+        <view class="user-wrap">
+          <view class="userinfo">
+            <text selectable="true" class="name">{{userinfo.nickName}}</text>
+            <image class="lvicon"  wx:if="{{info.empirical}}" src="{{host}}{{info.empirical}}"></image>
+          </view>
+          <view class="daily">已成为e圈会员{{info.time}}天</view>
+        </view>
+      </view>
+      <!-- <image class="iconfont" src="/images/right.png"></image> -->
+    </view>
+  </view>
+  <view class="me-block">
+    <view class="threeclum">
+      <!-- 未绑定 -->
+      <view class="flexbox" bindtap="toValid" wx:if="{{!userinfo.phone}}">
+        <view class="meicon"><image class="iconfont" src="/images/phone.png"></image><text selectable="true">手机号</text></view>
+        <view class="righttext">
+          <text selectable="true" class="bluefont">未认证</text>
+        </view>
+        <image class="iconfont" src="/images/right.png"></image>
+      </view>
+      <!-- 已绑定 -->
+       <view class="flexbox" bindtap="toValid" wx:if="{{userinfo.phone}}">
+        <view class="meicon"><image class="iconfont" src="/images/phone.png"></image><text selectable="true">手机号</text></view>
+        <view class="righttext">
+          <text selectable="true">{{userinfo.phone}}</text>
+        </view>
+        <image class="iconfont" src="/images/me_fabu.png"></image>
+      </view> 
+    </view>
+  </view>
+  <view class="me-block">
+    <view class="flexbox" bindtap="toMejinbi">
+      <view class="meicon"><image class="iconfont" src="/images/me_icon_jinbi.png"></image><text selectable="true">我的金币</text><text selectable="true" class="fontred">({{info.gold}})</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>
+  </view>
+  <view class="me-block">
+    <view class="flexbox" bindtap="toMefabu">
+      <view class="meicon"><image class="iconfont" src="/images/me_icon_fabu.png"></image><text selectable="true">我的发布</text><text selectable="true" class="fontred">({{info.artCount}})</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>
+  </view>
+  <!--<view class="me-block">
+    <view class="flexbox">
+      <view class="meicon"><image class="iconfont" src="/images/me_icon_xitong.png"></image><text selectable="true">系统消息</text><text selectable="true" class="fontred">(3)</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>
+  </view>-->
+  <view class="me-block">
+    <view class="flexbox" bindtap="toLike">
+      <view class="meicon"><image class="iconfont" src="/images/me_icon_like.png"></image><text selectable="true">我的收藏</text><text selectable="true" class="fontred">({{info.collCount}})</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>
+  </view>
+
+  <view class="me-block">
+    <view class="flexbox" bindtap="toMecard">
+      <view class="meicon"><image class="iconfont" src="/images/mingpian.png"></image><text>我的名片</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>
+  </view>
+  <view class="me-block">
+    <!--<view  open-type="contact" class="flexbox" >
+      <view class="meicon"><image class="iconfont" src="/images/me_icon_tel.png"></image><text selectable="true">客服中心</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>-->
+
+    <view class="flexbox" bindtap="toAbout">
+      <view class="meicon"><image class="iconfont" src="/images/me_icon_about.png"></image><text selectable="true">关于我们</text></view>
+      <image class="iconfont" src="/images/right.png"></image>
+    </view>
+
+    <!--客服会话 start-->
+    <!--<contact-button type="default-dark" size="20" session-from="weapp">
+    </contact-button>-->
+    <!--客服会话 end-->
+  </view>
+
+  <button class="kefu" open-type ="contact">联系客服</button>
+</view>

@@ -1,0 +1,27 @@
+<view class="container">
+	<view class="common-header">
+		<view class="header">
+			<view class="search">
+				<image class="icon" src="/images/search.png"/>
+				<input bindinput="inputSearch" placeholder="{{placeholder}}" auto-focus/>
+			</view>
+			<button class="green" wx:if="{{searchkeyword.length}}" size="mini" hover-class="hover" loading="" plain="" disabled="{{!searchkeyword.length}}"
+					bindtap="doSearch">搜索
+			</button>
+		</view>
+	</view>	
+	<view class="title">当前位置</view>
+	<view class="wrapper">
+		<text selectable="true" class="curaddr" data-city="{{address}}" data-district="{{district}}" bindtap="geoTapped" data-lat="{{location[0]}}" data-lng="{{location[1]}}">{{address}}</text>
+		<view class="geo" bindtap="reloadCurrent"><image  src="../../images/geo.png" /><text selectable="true" >重新定位</text></view>
+	</view>
+	<block wx:if="{{searchkeyword}}">
+		<view class="title">搜索地址</view>
+		<view class="list">
+			<view class="item" bindtap="addressTapped" data-city="{{item.city}}" data-district="{{item.district}}" data-lat="{{item.location.lat}}" wx:for="{{result}}" data-lng="{{item.location.lng}}" wx:for="{{result}}" wx:key="">
+				<text selectable="true" class="itemtitle" wx:if="{{item.city}}">{{item.city}}</text>
+				<!-- <text selectable="true" class="address">{{item.address}}</text> -->
+			</view>
+		</view>
+	</block>
+</view> 

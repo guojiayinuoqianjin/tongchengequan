@@ -1,0 +1,112 @@
+<view wx:if="{{!error}}">
+  <!-- <view class='order-ad'>
+  <view class='order-ad-pic'>
+    <image class='iconfont' src='/images/add_address.png'></image>
+  </view>
+   <view class='order-ad-info'>
+    <view class='flexbox'>
+      <view>收货人：张丁放</view>
+      <view>18610244363</view>
+    </view>
+    <view class='order-ad-mr'>收货地址：北极北京东城区</view>
+  </view> 
+
+</view> -->
+  <view class='order-item'>
+    <view class='flexbox'>
+      <view class='order-item-sub'>下单时间：{{order.created_at}}</view>
+    </view>
+    <view class='order-item-box border-1px-t'>
+      <view class='order-item-sub'>订单编号：{{order.numbers}}</view>
+      <view class='order-product-de' wx:for="{{order_detail}}" wx:for-item="i" wx:for-index="s">
+        <view class='flexrow'>
+          <image class='order-pic' mode="scaleToFill" src='{{host}}{{i.image}}'></image>
+          <view class='order-product-info'>
+            <view class='order-product-name'>{{i.goods_name}}</view>
+            <view class='order-product-tag'> </view>
+            <view class="flexbox">
+              <view class='order-product-sum'>¥ {{i.goods_price}}</view>
+              <view class="order-product-num">× {{i.goods_count}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- <view class='border-1px-t order-edit'>
+    <view class='flexbox'>
+      <view>运费</view>
+      <view>¥0.00</view>
+    </view>
+  </view> -->
+    <view class='order-edit'>
+      <view class='flexbox'>
+        <view>商品金额</view>
+        <view>¥ {{order.total_fee}}</view>
+      </view>
+    </view>
+    <view class='order-edit'>
+      <view class='flexbox'>
+        <view>优惠金额</view>
+        <view>¥ {{order.consume_gold/100}}</view>
+      </view>
+    </view>
+    <view class='order-edit'>
+      <view class='flexbox'>
+        <view>实付金额</view>
+        <view>¥ {{order.member_fee}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='order-code' wx:if="{{order.status != 1 && order.status != 3 && order.status != 4}}">
+
+    <view class='flexbox'>
+      <view>小程序核销码</view>
+      <view class='fontred'>如何扫码</view>
+    </view>
+
+    <view class='order-code-wrap'>
+      <view class='order-code-txt'>同城e圈专属核销码</view>
+      <view class='order-wrap'>
+        <image class='order-code-img' mode="widthFix" src='{{host}}{{order.verification }}'></image>
+        <view class='order-bg' wx:if="{{order.refund_info || order.status == 6 || order.status == 7}}"></view>
+        <image class='order-status' src='/images/tuikuanzhong.png' wx:if="{{order.refund_info}}"></image>
+        <image class='order-status' src='/images/hexiao.png' wx:if="{{order.status==6}}"></image>
+        <image class='order-status' src='/images/tuikuan.png' wx:if="{{order.status==7}}"></image>
+      </view>
+      <!-- <view>核销码
+        <text class='order-code-num'>{{order.numbers}}</text>
+      </view> -->
+    </view>
+    <view class="create-wrap" data-shopid="{{order.shop_id}}" data-numbers="{{order.numbers}}" bindtap="verification" wx:if="{{shop_administrator && order.status != 6}}">
+      <button class="createdbtn" type="primary" size="default" form-type="submit">
+        <text>确认核销</text>
+      </button>
+    </view>
+  </view>
+</view>
+<!--未付款  -->
+<view class='order-code' wx:if="{{order.status == 1 || order.status == 3 || order.status == 4}}">
+
+  <view class="create-wrap" wx:if="{{paymentStatus == 1  && order.status==1}}" data-shopid="{{order.shop_id}}" data-numbers="{{order.numbers}}" bindtap="requestPayment">
+    <button class="createdbtn" type="primary" size="default" form-type="submit">
+      <text>立即付款</text>
+    </button>
+  </view>
+<view class="create-wrap"  wx:if="{{paymentStatus == 1  && order.status==1}}"  data-shopid="{{order.shop_id}}" data-numbers="{{order.numbers}}" bindtap="removeOrder">
+    <button class="createdbtn" style="background:#F3F3F5;color:#282A37" type="primary" size="default" form-type="submit">
+      <text>取消订单</text>
+    </button>
+  </view>
+<view class="create-wrap" wx:if="{{paymentStatus == 0 && order.status==1}}" >
+    <button class="createdbtn" style="background:#F3F3F5;color:#282A37" type="primary" size="default" form-type="submit">
+      <text>订单已关闭</text>
+    </button>
+  </view>
+
+  <view class="create-wrap" wx:if="{{order.status == 4}}" >
+    <button class="createdbtn" style="background:#F3F3F5;color:#282A37" type="primary" size="default" form-type="submit">
+      <text>订单已取消</text>
+    </button>
+  </view>
+</view>

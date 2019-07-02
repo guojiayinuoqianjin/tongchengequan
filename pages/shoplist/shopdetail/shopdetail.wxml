@@ -1,0 +1,97 @@
+<view class="{{showCartDetail ? 'no-scroll' :'' }}">
+  <view class="container">
+    <form class='form' bindsubmit="formSubmit">
+      <view class="activity">
+        <view class="activity-top">
+          <swiper indicator-dots="true" interval="5000" duration="1000" indicator-color="rgba(255, 255, 255, .4)" indicator-active-color="rgba(255, 255, 255, .9)" autoplay="true">
+            <block wx:for="{{info.shop_ico}}" wx:for-item="v">
+              <swiper-item>
+                <image class="activity-pic" mode="scaleToFill" src="{{host}}{{v}}" />
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="activity-bottom">
+          <view class="activity-title">{{info.shop_name}}</view>
+          <view class="activity-subtitle">{{info.affiche}}</view>
+          <view class="activity-money">
+            <view style="float:left">
+              <view>
+                <view class="starsM  {{info.star_level>=1? '': 'hideStar'}}"></view>
+                <view class="starsM  {{info.star_level>=2? '': 'hideStar'}}"></view>
+                <view class="starsM  {{info.star_level>=3? '': 'hideStar'}}"></view>
+                <view class="starsM  {{info.star_level>=4? '': 'hideStar'}}"></view>
+                <view class="starsM  {{info.star_level>=5? '': 'hideStar'}}"></view>
+              </view>
+            </view>
+            <view style="float:right">已售：{{info.sold_count}}</view>
+
+          </view>
+        </view>
+      </view>
+
+      <view class="act-shop">
+        <view class="act-shop-item border-1px-b">
+          <image class="iconfont" src="/images/time.png"></image>
+          <text selectable="true">营业时间：{{info.start_time}} 至 {{info.end_time}}</text>
+        </view>
+        <view class="act-shop-item  border-1px-b" data-tel="{{info.tel?info.tel:info.shop_phone}}" bindtap="callPhone">
+          <image class="iconfont" src="/images/add_tel.png"></image>
+          <text selectable="true">{{info.tel?info.tel:info.shop_phone}}</text>
+        </view>
+        <view class="act-shop-item" bindtap="toMap" data-address="{{info.shop_address ? info.shop_address:info.address}}" data-lng="{{info.lng}}" data-lat="{{info.lat}}">
+          <image class="iconfont" src="/images/add_address.png"></image>
+          <text selectable="true">{{info.shop_address ? info.shop_address:info.address}}</text>
+        </view>
+      </view>
+      <view class="activity-item">
+        <view class="activity-shop-info">本店团购</view>
+      </view>
+      <view class='shop-ls'>
+        <view class='shop-item' wx:for="{{info.list}}" wx:for-item="i" wx:for-index="s" bindtap="toGoodsDetail" data-id="{{i.id}}">
+          <view class='shop-item-wrap'>
+            <image src='{{host}}{{i.cover_images}}'></image>
+            <view class='shop-item-name'>{{i.title}}</view>
+            <view class='shop-price-wp'>
+              <view>
+                <view class='shop-price-item'>¥{{i.price}}
+                  <text>         ¥{{i.original_price}}</text>
+                </view>
+              </view>
+              <view class='shop-price-j'>已售：{{i.sold_count}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="activity-item">
+        <view class="success-tl border-1px-b">用户评价
+          <text selectable="true" class="send-message" data-act_id="{{info.id}}" style="font-size:22rpx;" bindtap="comment">0条</text>
+        </view>
+        <view class="border-1px-b" wx:for="{{comments}}" wx:for-item="v" wx:for-index="k">
+          <view class="flexrow">
+            <image class="mes-user-avatar" src="{{v.avatarUrl}}"></image>
+            <view class="mes-user-send">
+              <view class="mes-user-name">{{v.nickName}}
+                <!-- <view class="comment-mes"><image class="iconfont" src="/images/icon-pinglun.png"></image><text selectable="true">回复</text></view>--></view>
+              <view class="mes-time">{{v.created_at}}</view>
+              <view class="mes-info">
+                {{v.content}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="tips">
+          <view class="line"></view>
+          <view class="noinfo-text">没有更多了</view>
+          <view class="line"></view>
+        </view>
+      </view>
+    </form>
+
+
+
+
+  </view>
+</view>

@@ -1,0 +1,78 @@
+<view class="container">
+  <view class="dewrapper">
+    <view class="flexrow">
+      <image class="avatar"  bindtap="toOtherperson" data-mid="{{info.mid}}"  src="{{info.avatarUrl}}"></image>
+      <view class="user">
+        <view class="name">{{info.nickName}}</view>
+        <view class="flexbox">
+          <text selectable="true">离您{{info.distance}}</text>
+        </view>
+      </view>
+    </view>
+    <!--两者取其start一-->
+    <view class="zanbox"  bindtap="noPhone" wx:if="{{!info.phone}}">
+      联系TA
+    </view>
+    <view class="zanbox boxtel"  wx:if="{{info.phone}}" bindtap="makePhoneCall" data-phone="{{info.phone}}">
+      联系TA
+    </view>
+    <view class="star" wx:if="{{!info.collect && info.mid != mid}}"  bindtap="collectAdd" data-cateid="{{info.cateid}}" data-art_id="{{info.id}}">
+      收藏
+    </view>
+     <view class="star starlast"  wx:if="{{info.collect}}" >
+      已收藏
+    </view> 
+    <!--两者取其end一-->
+  </view>
+  <view class="de-time">
+    <view class="flexbox">
+      <view>
+        <text selectable="true">{{info.created_at}}</text>
+      </view>
+      <view>
+        <view class="icon-zan" hover-class="icon-zan-red" bindtap="praiseAdd" data-nickname="{{info.nickName}}" data-cateid="{{info.cateid}}"  data-art_id="{{info.id}}"></view>
+        <text selectable="true" class="number zannumber" >{{info.praise}}</text>
+      </view> 
+    </view>
+  </view>
+  <view class="de-txt">
+    <view class="de-txt-info">
+      <text selectable="true">{{info.info}}</text>
+    </view>
+  
+    <image class="depic" mode="widthFix" wx:for="{{info.images}}" wx:for-item="v" src="{{host}}{{v}}" data-index="1"/>
+
+  </view>
+  <view class="location" bindtap="toMap">
+    <image class="iconfont" src="/images/add_address_blue.png"></image><text selectable="true">{{info.address}}</text>
+  </view>
+  <view class="visit">
+    <view class="flexbox">
+      <view class="new-item-time">访问量：{{info.click}}</view>
+      <view class="useractive"> 
+        <view class="user-item" data-k="{{k}}" data-cateid="{{info.cateid}}" data-art_id="{{info.id}}" bindtap="comment">
+          <image class="md-iconfont" src="/images/icon-pinglun.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="comment" wx:if="{{comments.length}}">
+    <view class="trigon"></view>
+    <view class="comment-list">
+      <view class="comment-item" wx:for="{{comments}}" wx:for-item="i" wx:for-index="key" >
+        <text selectable="true" class="username"  bindtap="toOtherperson" data-mid="{{i.from_mid}}">{{i.from_name}}</text>
+        <text selectable="true" wx:if="{{i.to_name}}">回复</text>
+        <text selectable="true" class="username" wx:if="{{i.to_name}}" bindtap="toOtherperson" data-mid="{{i.to_mid}}">{{i.to_name}}</text>
+        <text selectable="true" class="username">：</text>
+        <text selectable="true" class="new-item-des-pre" bindtap="replyInfo" data-from_name="{{i.from_name}}" data-k="{{k}}" data-cateid="{{info.cateid}}" data-from_mid="{{i.from_mid}}" data-art_id="{{info.id}}">{{i.content}}</text>
+      </view>
+    </view>
+  </view>
+  <form class='form' report-submit="true" bindsubmit="{{hint ? 'replyInfoRequest' : 'formSubmit'}}">
+    <view class="inputtext"  wx:if="{{focus}}">
+      <input placeholder="{{hint ? hint : '评论'}}" name="content" placeholder-style="color:#aaaaaa;"  focus="{{focus}}" bindblur="bindblur" />
+      <!--bindconfirm="{{hint ? 'replyInfoRequest' : 'formSubmit'}}" -->
+      <button class="send" size="mini" formType="submit" bindtap="inputValue">发送</button>
+    </view>
+  </form>
+</view>

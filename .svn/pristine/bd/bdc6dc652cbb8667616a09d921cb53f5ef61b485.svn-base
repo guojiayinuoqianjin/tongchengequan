@@ -1,0 +1,62 @@
+{
+  "pages":[ 
+    "pages/index/index",
+    "pages/me/meCard/meCard",
+    "pages/me/personalCard/personalCard",
+    
+    "pages/activitydetail/activitydetail",
+    "pages/share/share",
+    "pages/activitylist/activitylist",
+    
+    "pages/me/record/record",
+    "pages/me/status/status",
+    "pages/me/widthdraw/widthdraw",
+    "pages/me/mejinbi/mejinbi",
+    
+    "pages/address/address",
+    "pages/me/melike/melike",
+    
+    "pages/me/me",
+    "pages/me/about/about",
+    "pages/me/valid/valid",
+    "pages/me/mefabu/mefabu",
+    "pages/me/collect/collect",
+    "pages/detail/detail",
+    "pages/releaseinfo/releaseDetail/releaseDetail",
+    "pages/releaseinfo/releaseinfo",
+    "pages/otherperson/otherperson",
+    "pages/category/category",
+    "pages/friend/friend"    
+  ],
+  "window":{
+    "backgroundTextStyle":"#fff",
+    "navigationBarBackgroundColor": "#353539",
+    "navigationBarTextStyle":"#fff"
+  },
+  "tabBar": {
+    "color": "#353539",
+    "selectedColor": "#58ad45",
+    "borderStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/table_icon_new.png",
+        "selectedIconPath": "images/table_icon_new_full.png",
+        "text": "最新"
+      },
+      {
+        "pagePath": "pages/releaseinfo/releaseinfo",
+        "iconPath": "images/table_icon_release.png",
+        "selectedIconPath": "images/table_icon_release_full.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "images/table_icon_me.png",
+        "selectedIconPath": "images/table_icon_me_full.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

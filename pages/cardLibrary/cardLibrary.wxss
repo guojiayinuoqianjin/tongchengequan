@@ -1,0 +1,53 @@
+.cardly-wrap {
+  background: #fff;
+}
+
+.cardly-item {
+  padding: 30rpx 20rpx
+}
+
+.cardly-logo {
+  width: 120rpx;
+  height: 120rpx;
+  flex: 0 0 120rpx;
+}
+
+.cardly-info {
+  flex: 4;
+  padding-left: 30rpx;
+}
+
+ .cardly-subtitle {
+  font-size: 24rpx;
+  color: #a0a0a0;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.companyicon {
+  flex: 1;
+}
+
+.companyicon_line {
+  margin-bottom: 15rpx;
+}
+
+.companyicon {
+  text-align: right;
+}
+
+.companyImg {
+  width: 65rpx;
+  height: 65rpx;
+}
+
+.icon-company {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+  vertical-align: middle;
+}
+
+.name {
+  color: #838383;
+}

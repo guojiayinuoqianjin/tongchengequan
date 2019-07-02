@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="release-tl"><text selectable="true">10秒发布</text><text selectable="true">更快更准</text></view>
+  <view class="category">
+
+    <view class="category-item" bindtap="toReleaseDetail" wx:for="{{categoryList}}" data-id="{{v.id}}"  data-detail="{{v.detail}}" wx:for-item="v" wx:for-index="k" data-catename="{{v.catename}}">
+      <view class="category-item-name">{{v.catename}}</view>
+      <text selectable="true" class="category-item-text">{{v.catedescribe}}</text>
+    </view>
+  
+  </view>
+</view>

@@ -1,0 +1,27 @@
+var app = getApp();
+var md5 = require('../../utils/md5.js');
+var request = require('../../utils/request.js');
+Page({
+  data: {
+
+  },
+
+  onLoad: function (options) {
+    var that = this;
+    request.request({
+      method: 'categoryList', data: '', success(res) {
+        that.setData({
+          categoryList: res.data.categoryList
+        })
+      }
+    });
+  },
+  toReleaseDetail: function (e) {
+    var cateid = e.currentTarget.dataset.id;
+    var detail = e.currentTarget.dataset.detail;
+    var catename = e.currentTarget.dataset.catename;
+    wx.navigateTo({
+      url: 'releaseDetail/releaseDetail?cateid=' + cateid + '&detail=' + detail+'&catename='+catename
+    })
+  }
+})

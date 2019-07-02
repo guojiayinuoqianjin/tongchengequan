@@ -1,0 +1,110 @@
+page{
+  background-color: #fff;
+  padding-bottom: 50rpx;
+}
+.avatar{
+  border-radius: 100%;
+  margin-right: 20rpx;
+  flex: 0 0 auto;
+}
+.dewrapper{
+  padding: 40rpx;
+  position: relative;
+}
+.name{
+  color: #5c6f99;
+  font-size: 30rpx;
+  margin-bottom: 15rpx;
+  width: 300rpx;
+  display: inline-block;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+
+}
+.user{
+  width: 100%;
+}
+.flexbox{
+  color: #666;
+  align-items: baseline;
+}
+.daynum{
+  float: right;
+  font-size: 24rpx;
+}
+.zanbox,.star{
+  position: absolute;
+  right: 40rpx;
+  width: 110rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 6rpx;
+  border: 1px solid #5c6f99;
+  text-align: center;
+  color: #5c6f99;
+  font-size: 24rpx;
+  top: 70rpx;
+}
+.star{
+  right: 160rpx;
+}
+.zanbox image,.star image{
+  margin-right: 10rpx;
+}
+.boxtel,.starlast{
+  background: #50b03e;
+  color: #fff;
+  border: none;
+}
+.support{
+  color: #5c6f99;
+  padding-left: 8rpx;
+}
+.de-time{
+  border-top: 1px solid #e5e4e4;
+  border-bottom: 1px solid #e5e4e4;
+  padding: 20rpx 40rpx;
+}
+.category{
+  color: #50b03e;
+  margin-left: 20rpx;
+}
+.de-txt{
+  padding: 40rpx;
+  line-height: 2;
+}
+.de-txt-info{
+  margin-bottom: 40rpx; 
+  white-space: pre-wrap;
+  word-break:break-all;
+}
+.de-pic{
+  width: 100%;
+  border: 1px solid #000;
+}
+.location{
+  padding: 0 40rpx 20rpx;
+  color: #5c6f99;
+  font-size: 24rpx;
+  margin-top: -20rpx;
+}
+.visit{
+  padding: 0 40rpx;
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  margin-top: -20rpx;
+}
+.depic{
+  width: 670rpx;
+}
+.number {
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  vertical-align: middle;
+}
+.comment{
+  margin: 0 40rpx 40rpx;
+}

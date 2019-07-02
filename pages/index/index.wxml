@@ -1,0 +1,111 @@
+<view class="address" bindtap="tapAddress">
+  <image class="icon" src="/images/address_green.png" />
+  <text selectable="true">{{address ? address : '商丘市'}}</text>
+</view>
+<view class="container indexpage">
+  
+ <view wx:if="{{advList}}" style="margin-bottom:10rpx;">
+  <swiper indicator-dots="true" autoplay="true" interval="4000" duration="1000" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="rgba(255, 255, 255, .8)">
+    <block wx:for="{{advList}}" wx:for-item="v">
+      <swiper-item>
+        <navigator url="../detail/detail?art_id={{v.art_id}}">
+          <image src="{{host}}{{v.images}}" class="slide-image" width="355" height="240" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+</view> 
+
+  <view class="icons">
+    <swiper indicator-dots="true" interval="5000" duration="1000" indicator-color="rgba(0, 0, 0, .2)" indicator-active-color="rgba(0, 0, 0, .8)">
+      <swiper-item>
+        <view class="icon" wx:for="{{categoryList}}" wx:for-item="icon" wx:key="id" wx:if="{{icon.sort < 9}}">
+          <navigator url="{{icon.url}}">
+            <view class="icon_bg icon-{{icon.color}}-color">
+              <image src="{{host}}{{icon.image}}"></image>
+            </view>
+            <text selectable="true">{{icon.catename}}</text>
+          </navigator>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="icon" wx:for="{{categoryList}}" wx:for-item="icon" wx:key="id" wx:if="{{icon.sort > 8}}">
+          <navigator url="{{icon.url}}">
+            <view class="icon_bg icon-{{icon.color}}-color">
+              <image src="{{host}}{{icon.image}}"></image>
+            </view>
+            <text selectable="true">{{icon.catename}}</text>
+          </navigator>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<view class='container'>
+  <view class='shop-s-name'><text>热门商家</text></view>
+  <view class='shop-item' wx:for="{{list}}" wx:for-item="v" wx:for-index="k" >
+    <view class='shop-item-name' bindtap="toShopDetail" data-id="{{v.id}}">
+      <image class='shop-item-name-pic' src='{{host}}{{v.shop_ico}}'></image>
+      <view class='shop-item-name-info' >
+        <view class='index-star'>
+          <view class="star-pos" >
+            <view class="starsM  {{v.star_level>=1? '': 'hideStar'}}"></view>
+            <view class="starsM  {{v.star_level>=2? '': 'hideStar'}}"></view>
+            <view class="starsM  {{v.star_level>=3? '': 'hideStar'}}"></view>
+            <view class="starsM  {{v.star_level>=4? '': 'hideStar'}}"></view>
+            <view class="starsM  {{v.star_level>=5? '': 'hideStar'}}"></view>
+          </view>
+        </view>
+        <view class='shop-item-name-p'>{{v.shop_name}}</view>
+        <view class='shop-item-name-t'><text>销量 {{v.sold_count}}</text><text>共{{v.goods.length}}套团购商品</text></view>
+        <view class='shop-item-name-t flexbox'  bindtap="toMap" data-address="{{v.shop_address}}" data-lng="{{v.lng}}" data-lat="{{v.lat}}">
+           <view  class="shopaddress" ><image class='shop-address' src='/images/address.png'></image>{{v.shop_address}}</view>
+           <view class="fengxiao"  wx:if="{{v.sales !=0}}">支持分销</view>
+        </view>
+        <view class='shop-item-r-wrap'>
+          <view class='shop-item-m'>{{v.distance}}</view>
+          <!-- <view class='shop-item-btn'>进店</view> -->
+        </view>
+      </view>
+    </view>
+
+    <view class='shop-item-t-s'>
+      <view class='shop-item-t' style='width: {{v.goods.length > 2 ? v.goods.length * 240 : 700}}rpx'>
+        <view class='shop-item-t-item' wx:if="{{v.goods.length > 2}}" wx:for="{{v.goods}}" wx:for-item="i" wx:for-index="s" bindtap="toGoodsDetail" data-id="{{i.id}}">
+          <image src='{{host}}{{i.cover_images}}' mode="aspectFill"></image>
+          <view class="shop-item-t-item-name">{{i.title}}</view>
+          <view class='flexbox'>
+            <view class="shop-item-t-item-p" style="color:red">¥{{i.price}}</view>
+            <view class='xl-sum'>已售:{{i.sold_count}}</view>
+          </view>
+        </view>
+
+
+         <view class='shop-item-t-item-one' wx:if="{{v.goods.length == 1}}"  wx:for="{{v.goods}}" wx:for-item="i" wx:for-index="s" bindtap="toGoodsDetail" data-id="{{i.id}}">
+          <image src='{{host}}{{i.cover_images}}' mode="aspectFill"></image>
+          <view class="shop-item-t-item-name">{{i.title}}</view>
+          <view class='flexbox'>
+            <view class="shop-item-t-item-p" style="color:red">¥{{i.price}}</view>
+            <view class='xl-sum'>已售:{{i.sold_count}}</view>
+          </view>
+        </view> 
+
+         <view class='shop-item-t-item-two' wx:if="{{v.goods.length == 2}}"  wx:for="{{v.goods}}" wx:for-item="i" wx:for-index="s" bindtap="toGoodsDetail" data-id="{{i.id}}">
+          <image src='{{host}}{{i.cover_images}}' mode="aspectFill"></image>
+          <view class="shop-item-t-item-name">{{i.title}}</view>
+          <view class='flexbox'>
+            <view class="shop-item-t-item-p" style="color:red">¥{{i.price}}</view>
+            <view class='xl-sum'>已售:{{i.sold_count}}</view>
+          </view>
+        </view> 
+
+      </view>
+
+    </view>
+  </view>
+</view>
+<view class="tips" wx:if="{{!more}}">
+  <view class="line"></view>
+  <view class="noinfo-text">没有更多了</view>
+  <view class="line"></view>
+</view>

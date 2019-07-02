@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="activity" bindtap="toActivity" data-id='{{v.id}}' data-k='{{k}}' wx:for="{{list}}" wx:for-item="v" wx:for-index="k">
+    <view class="activity-top">
+      <image class="activity-pic" src="{{host}}{{v.images}}"></image>
+      <view class="activity-opcity" wx:if="{{!v.status}}"></view>
+      <view class="activity-in">
+        <image class="iconfont" src="/images/zan_white.png"></image>
+        <text selectable="true">{{v.click}}人感兴趣</text>
+      </view>
+      <view class="activity-end" wx:if="{{!v.status}}">
+        <!-- <image class="endimage" src="/images/end.png"></image> -->
+        <image class="endimage" src="/images/nostart.png"></image>
+      </view>
+    </view>
+    <view class="activity-bottom">
+      <view class="activity-title">{{v.title}}</view>
+      <view class="activity-subtitle">时间 {{v.start_time}} 至 {{v.end_time}}</view>
+      <view class="activity-money">
+        <text selectable="true">{{v.price == 0 ? '免费' : v.price+'元'}}</text>已报名：{{v.participation_num}}
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class="tips" wx:if="{{more}}">
+  <view class="line"></view>
+  <view class="noinfo-text">没有更多了</view>
+  <view class="line"></view>
+</view>

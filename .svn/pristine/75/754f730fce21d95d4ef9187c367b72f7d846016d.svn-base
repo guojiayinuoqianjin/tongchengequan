@@ -1,0 +1,102 @@
+var app = getApp();
+var request = require('../../../utils/request.js');
+
+Page({
+  data: {
+    second: 60,
+    selected_re: false,
+    selected_get: true,
+  },
+  onShow: function () {
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userinfo: userInfo,
+    })
+    this.request();
+  },
+  onLoad: function () {
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userinfo: userInfo,
+    })
+    this.request();
+  },
+
+  request: function () {
+    var that = this
+    request.request({
+      method: 'getUserInfo', data: '', success(res) {
+        // console.log(res)
+        that.setData({
+          info: res.data,
+          host: app.globalData.serverHost
+        })
+      }
+    });
+  },
+
+  getValid: function (e) {
+    var phone = e.currentTarget.dataset.phone;
+    var status = this.verifyPhone(phone);
+    if (status == false) {
+      return false
+    }
+    this.data.codeStatus = 1;//证明获取过验证码了
+    this.setData({
+      selected_re: true,
+      selected_get: false,
+    });
+    countdown(this);
+    this.request('getPhoneCode', { phone: phone });
+  },
+
+  //输入手机号
+  inputValue: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+
+  //验证手机号码
+  verifyPhone: function (phone) {
+    if (!phone) {
+      wx.showToast({
+        title: '请填写手机号',
+        image: '/images/ha.png',
+        duration: 2000
+      })
+      return false;
+    }
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if (phone) {
+      if (!myreg.test(phone)) {
+        wx.showToast({
+          title: '请填写有效的手机号',
+          image: '/images/ha.png',
+          duration: 2000
+        })
+        return false;
+      }
+    }
+    return true
+  },
+})
+
+function countdown(that) {
+  var second = that.data.second;
+  if (second == 0) {
+    that.setData({
+      selected_re: false,
+      selected_get: true,
+      second: 60,
+    });
+    return;
+  }
+
+  var time = setTimeout(function () {
+    that.setData({
+      second: second - 1
+    });
+    countdown(that);
+  }, 1000)
+}

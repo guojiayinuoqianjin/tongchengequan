@@ -1,0 +1,126 @@
+.withdraw{
+  padding-bottom: 92rpx;
+}
+.topwrap{
+  background: #ff532a;
+  padding-top: 20rpx;
+  margin-bottom: 14rpx;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+.topwrap .line{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+}
+.title{
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, .7);
+}
+.jinbitips{
+  background: rgba(255, 255, 255, .1);
+  text-align: left;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, .8);
+  margin-top: 40rpx;
+}
+.total,.day{
+  flex: 1;
+}
+.total{
+  color: #fff;
+  font-size: 80rpx;
+}
+.subtitle{
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.shouru .iconfont{
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.shouru text{
+  vertical-align: middle;
+}
+.list{
+  background: #fff;
+  border-top: 1px solid #eaeaea;
+}
+.list-item{
+  display: flex;
+  padding: 20rpx;
+  align-items: center;
+  /* border-bottom: 1px solid #eaeaea; */
+}
+.list-item-lf{
+  flex: 3;
+}
+.list-item-rt{
+  flex: 1;
+}
+.avatar{
+  border-radius: 100%;
+  margin-right: 16rpx;
+}
+.name{
+  font-size: 30rpx;
+}
+.info,.date{
+  font-size: 24rpx;
+  color: #a0a0a0;
+}
+.add{
+  color: #fe5229;
+  font-weight: bold;
+}
+.add .iconfont{
+  margin-left: 10rpx;
+}
+.jian{
+  color: #5897f1;
+}
+.jinbitips text{
+  display: inline-block;
+  line-height: 32rpx;
+  vertical-align: middle;
+  padding-left: 5rpx;
+}
+.btn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  background: #fff;
+}
+.btn-item{
+  flex: 1;
+}
+.btndisabled{
+  color: #2772ff;
+  background: #fafafa;
+  border-left: 1px solid #eaeaea;
+}
+.record{
+  color: #a0a0a0;
+  position: relative;
+}
+.btnprimary{
+  color: #fff;
+  background: #2772ff;
+}
+.fans{
+  font-size: 14rpx;
+  color:red;
+}

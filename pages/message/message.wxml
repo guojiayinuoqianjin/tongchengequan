@@ -1,0 +1,23 @@
+<view class="tips"  wx:if="{{empty}}">
+  <view class="line"></view>
+  <view class="noinfo-text">发个信息认识一下吧</view>
+  <view class="line"></view>
+</view>
+<view class="tips"  wx:if="{{more}}">
+  <view class="line"></view>
+  <view class="noinfo-text">没有更多了</view>
+  <view class="line"></view>
+</view>
+<view class="container">
+  <view class="message-item {{v.mid == mid ? 'right' : ''}}" wx:for="{{list}}" wx:for-item="v" wx:for-index="key">
+    <image class="message-item-logo"  src="{{v.avatarUrl}}"></image>
+    <text class="message-item-text">{{v.content}}</text>
+  </view>
+  <form class='form' report-submit="true" bindsubmit="sendMessage">
+    <view class="inputtext">
+      <input name="content" value='{{content}}' type="text"/>
+      <button class="send" size="mini" formType="submit" bindtap="inputValue">发送</button>
+    </view>
+  </form>
+</view>
+

@@ -1,0 +1,88 @@
+<view class="common-header">
+  <form class='form' bindsubmit="search">
+    <view class="header">
+      <view class="search">
+        <image class="icon" src="/images/search.png" />
+        <input bindinput="inputSearch" name="keywords" placeholder="搜索本店商品" placeholder-style='color: #ccc;' />
+      </view>
+      <button class="green" formType="submit" bindtap="submitInfo" wx:if="{{searchkeyword.length}}" size="mini" hover-class="hover" loading="" plain="" disabled="{{!searchkeyword.length}}" bindtap="doSearch">搜索
+      </button>
+    </view>
+  </form>
+</view>
+<view class='shop-banner'>
+  <image class='shop-banner-img' src='/images/p1.png' mode="widthFix"></image>
+  <view class='shop-banner-info'>
+    <image class='shop-logo' mode="widthFix" src='/images/prodcut.jpg'></image>
+    <view class='shop-name'>
+      <text>潇潇细雨</text>
+      <view>
+        <image class='iconfont' src='/images/zhichi.png'></image>
+        <text class='shop-total'>7天无理由退货</text>
+        <image class='iconfont' src='/images/zhichi.png'></image>
+        <text class='shop-total'>72小时发货</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='shop-con border-1px-b'>
+  <view class='shop-sort-wp'>
+    <view class='shop-sort active'>销量</view>
+    <view class='shop-sort'>新品</view>
+    <view class='shop-sort'>价格 <image class='iconfont' src='/images/paixu.png'></image></view>
+  </view>
+  <view class='shop-ls'>
+    <view class='shop-item'>
+      <view class='shop-item-wrap'>
+        <image src='/images/prodcut.jpg' mode="widthFix"></image>
+        <view class='shop-item-name'>情侣装圆领男女加绒卫衣圆领男女加绒卫衣情侣</view>
+        <view class='shop-price-wp'>
+          <view>
+            <view class='shop-price-item'>¥19.9 <text>¥30.0</text></view>
+            <view class='shop-price-j'>销量3000件</view>
+          </view>
+          <view class='product-btn'>立即购买</view>
+        </view>
+      </view>
+    </view>
+    <view class='shop-item'>
+      <view class='shop-item-wrap'>
+        <image src='/images/prodcut.jpg' mode="widthFix"></image>
+        <view class='shop-item-name'>情侣装圆领男女加绒卫衣圆领男女加绒卫衣情侣</view>
+        <view class='shop-price-wp'>
+          <view>
+            <view class='shop-price-item'>¥19.9 <text>¥30.0</text></view>
+            <view class='shop-price-j'>销量3000件</view>
+          </view>
+          <view class='product-btn'>立即购买</view>
+        </view>
+      </view>
+    </view>
+    <view class='shop-item'>
+      <view class='shop-item-wrap'>
+        <image src='/images/prodcut.jpg' mode="widthFix"></image>
+        <view class='shop-item-name'>情侣装圆领男女加绒卫衣圆领男女加绒卫衣情侣</view>
+        <view class='shop-price-wp'>
+          <view>
+            <view class='shop-price-item'>¥19.9 <text>¥30.0</text></view>
+            <view class='shop-price-j'>销量3000件</view>
+          </view>
+          <view class='product-btn'>立即购买</view>
+        </view>
+      </view>
+    </view>
+    <view class='shop-item'>
+      <view class='shop-item-wrap'>
+        <image src='/images/prodcut.jpg' mode="widthFix"></image>
+        <view class='shop-item-name'>情侣装圆领男女加绒卫衣圆领男女加绒卫衣情侣</view>
+        <view class='shop-price-wp'>
+          <view>
+            <view class='shop-price-item'>¥19.9 <text>¥30.0</text></view>
+            <view class='shop-price-j'>销量3000件</view>
+          </view>
+          <view class='product-btn'>立即购买</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
